@@ -1,17 +1,21 @@
 import React from "react";
-import pdlogo from "../assets/logopd.png";
+import pdlogo from "../assets/riderlandscape.jpg";
 import "../styles/About.css";
+import { Parallax } from 'react-parallax';
+
 function About() {
   return (
-    <div className="about">
-      <div
-        className="aboutTop"
-        style={{ backgroundImage: `url(${pdlogo})` }}
-      ></div>
-      <div className="aboutBottom">
-        <h1> ABOUT US</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+    <div className="About">
+<Parallax strength={600} bgImage={pdlogo}>
+  <div className="content">
+  <div className="text-content">About Us</div>
+  <div className="paragraph-content"></div>
+  </div>
+
+</Parallax>
+    <div className="content">
+      <div className="paragraph-content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi repudiandae consequuntur
           voluptatum laborum numquam blanditiis harum quisquam eius sed odit
           fugiat iusto fuga praesentium optio, eaque rerum! Provident similique
@@ -24,8 +28,8 @@ function About() {
           recusandae alias error harum maxime adipisci amet laborum.
           Perspiciatis minima nesciunt dolorem! Officiis iure rerum voluptates a
           cumque velit
-        </p>
       </div>
+    </div>
     </div>
   );
 }
