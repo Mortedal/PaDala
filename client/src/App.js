@@ -2,7 +2,8 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Login from './pages/Login'
+import Login from './pages/Login';
+import About from './pages/About';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return <div className="App"> 
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route path='/' exact element={<Home/>}/>
       <Route path='/login' exact element={<Login/>}/>
+      <Route path='/about' exact element={<About/>}/>
       </Routes>
     </Router>
    </div>
