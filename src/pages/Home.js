@@ -10,7 +10,7 @@ function Home() {
         className='headerContainer'
         style={{ backgroundImage: `url(${BannerPic})` }}>
         
-            <h1>Pa-dala</h1>
+            <h1>Pa-Dala</h1>
             <p>Erranding Service</p>
             <Link to ="/login">
             <button>Log-in</button>
