@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import bannerPic from '../assets/placeholder.jpeg'
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import '../styles/Login.css'
 
 
@@ -16,20 +15,26 @@ function Login() {
 
         <div
         className='rightside'>
-            <h1>Log-in</h1><br/><br/>
-            <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-            </Form>
+            <h1>Log-in</h1>
+            <p>Or sign up<Link to="/"> here</Link></p><br/>
+
+            <div className="mb-3">
+              <label>Email address</label>
+              <input
+             type="email"
+              className="form-control"
+              placeholder="Enter email"
+          />
+        </div>
             
-            <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter email" />
-            </Form.Group>
-            </Form><br/>
+            <div className="mb-3">
+              <label>Password</label>
+              <input
+             type="password"
+             className="form-control"
+             placeholder="Enter Password"
+            />
+            </div>
             <Link to ="/">
             <Button variant="outline-dark">Log-in</Button>
             </Link>

@@ -5,7 +5,7 @@ import { Parallax } from 'react-parallax';
 
 function About() {
   return (
-    <div className="About">
+  <div className="About"> 
 <Parallax strength={600} bgImage={pdlogo}>
   <div className="content">
   <div className="text-content">About Us</div>
