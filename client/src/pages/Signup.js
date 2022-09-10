@@ -13,13 +13,13 @@ import '../styles/Signup.css'
 
 
 function Signup() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [cpassword, setcPassword] = useState('');
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [cpassword, setcPassword] = useState('')    
 
     async function registerUser(event) {
-        event.preventDefaul()
+       event.preventDefault()
 
         const response = await fetch('http://localhost:1337/api/register', {
             method: 'POST',
@@ -30,6 +30,7 @@ function Signup() {
                 name,
                 email,
                 password,
+                cpassword,
             }),
         })
 
@@ -43,60 +44,66 @@ function Signup() {
   return (  
     <div className='signup'>
        
-        <div
+       <div
         className='rightside'>
-          <div className="loginBox">
-          <form onSubmit={registerUser}>
+          <div className="loginBox" >
+          
             <h1>Sign up</h1><br/>
 
-              <div >
+            <form onSubmit={registerUser}>
+
+              
               <TextField
               value={name}
               onChange={(e) => setName(e.target.value)}
-              id="name"
-              label="Full Name"
               style={{width:300}}
+              placeholder="Name"
+              type="text"
               />
-              </div><br/>
+              <br/><br/>
 
-              <div >
+              
               <TextField
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              id="email"
-              label="Email"
+              placeholder="Email"
+              type="email"
               style={{width:300}}
               />
-              </div><br/>
+              <br/><br/>
 
-              <div>
+              
               <TextField
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              id="password"
-              label="Password"
+              placeholder="Password"
+              type="Password"
               style={{width:300}}
               />
-              </div><br/> 
+              <br/> <br/>
 
-              <div>
+             
               <TextField
               value={cpassword}
               onChange={(e) => setcPassword(e.target.value)}
-              id="cpassword"
-              label="Confim Password"
+              placeholder="Confirm Password"
+              type="Password"
               style={{width:300}}
               />
-              </div><br/> 
+              <br/> 
               
             {/* <Link to ="/" style={{ textDecoration: 'none' }}> */}
-            <input type='submit' value="register "/>
-            
-            {/* </Link> */}
+            <Button type="submit"> Register </Button> 
             </form>
+            {/* </Link> */}
+            
             </div>
+            
         </div>
-      </div>
+        </div>
+
+        
+      
   )
 }
 export default Signup

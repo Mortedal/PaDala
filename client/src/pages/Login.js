@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../styles/Login.css'
 
 
-// handleSubmit(e) {
-//   e.preventDefault();
-//   const {fname, lname, email, password} = this.state;
-//   console.log(fname, lname, email, password);
-// };
 
 
 function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
+  async function loginUser(event) {
+    event.preventDefault()
+  
+  const response = await fetch('http://localhost:1337/api/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email,
+        password,
+    }),
+  })
+  
+  const data = await response.json()
+  
+  console.log(data)
+  }
+
   
   return (  
     <div className='login'>
@@ -20,30 +38,38 @@ function Login() {
         <div
         className='rightside'>
           <div className="loginBox">
+          <form onSubmit={loginUser}>
             <h1>Log-in</h1>
               <p>Or sign up <Link to="/signup">here</Link></p><br/>
-              <div >
+
               <TextField
-              id="filled-disabled"
-              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              type="email"
               style={{width:300}}
               />
-              </div><br/>
-              <div>
+              <br/><br/>
+
+
               <TextField
-              id="filled-disabled"
-              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              type="Password"
               style={{width:300}}
               />
-              </div><br/> 
+              <br/> <br/>
               
             {/* <Link to ="/signup" style={{ textDecoration: 'none' }}> */}
-            <Button>Log-in</Button>
+            <Button type="submit"> Log-in </Button> 
+            </form>
             {/* </Link> */}
             </div>
         </div>
       </div>
   )
 }
+
 export default Login
 
