@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import '../styles/Login.css'
+import '../styles/Signup.css'
 
 
 // handleSubmit(e) {
@@ -41,7 +41,7 @@ function Signup() {
 
 
   return (  
-    <div className='login'>
+    <div className='signup'>
        
         <div
         className='rightside'>
@@ -91,7 +91,7 @@ function Signup() {
               
             {/* <Link to ="/" style={{ textDecoration: 'none' }}> */}
             <input type='submit' value="register "/>
-            <Button type='submit' value="register">Log-in</Button>
+            
             {/* </Link> */}
             </form>
             </div>

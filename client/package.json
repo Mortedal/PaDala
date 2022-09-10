@@ -2,6 +2,8 @@
   "name": "padala",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:1337",
+  "homepage": ".",
   "dependencies": {
     "@mui/icons-material": "^5.10.3",
     "@testing-library/jest-dom": "^5.16.5",

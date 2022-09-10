@@ -21,7 +21,7 @@ function Login() {
         className='rightside'>
           <div className="loginBox">
             <h1>Log-in</h1>
-              <p>Or sign up <Link to="/">here</Link></p><br/>
+              <p>Or sign up <Link to="/signup">here</Link></p><br/>
               <div >
               <TextField
               id="filled-disabled"
