@@ -37,9 +37,9 @@ function Login() {
               />
               </div><br/> 
               
-            <Link to ="/" style={{ textDecoration: 'none' }}>
+            {/* <Link to ="/signup" style={{ textDecoration: 'none' }}> */}
             <Button>Log-in</Button>
-            </Link>
+            {/* </Link> */}
             </div>
         </div>
       </div>
