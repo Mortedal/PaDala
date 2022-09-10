@@ -46,4 +46,11 @@
     color: #00eeff; 
     background-color: #000000; 
   }
+  @media only screen and (max-height: 650px) {
+    .loginBox {
+      background-color: #ffffff; 
+      padding: 70px;
+      border-radius: 10px;
+    }
+  }
   

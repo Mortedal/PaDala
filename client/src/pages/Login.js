@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../styles/Login.css'
@@ -8,9 +8,15 @@ import '../styles/Login.css'
 
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  useEffect(()=>{
+    const auth = localStorage.getItem('user');
+    if (auth) {
+      navigate('/')
+    }
+  })
 
   async function loginUser(event) {
     event.preventDefault()
@@ -29,8 +35,9 @@ function Login() {
   const data = await response.json()
 
   if (data.user) {
-    alert('Login Succesfull')
-    window.location.href = '/service'
+    alert('Login Succesfull')   
+    localStorage.setItem("user", JSON.stringify(data))
+    window.location.href = '/dashboard'
   } else {
     alert ('check your credentials')
   }

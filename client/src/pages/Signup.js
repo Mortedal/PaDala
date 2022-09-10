@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -14,11 +14,11 @@ import '../styles/Signup.css'
 
 
 function Signup() {
-    // const history = useHistory();
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [cpassword, setcPassword] = useState('')    
+  const navigate = useNavigate();
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [cpassword, setcPassword] = useState('')    
 
     async function registerUser(event) {
        event.preventDefault()
@@ -39,7 +39,8 @@ function Signup() {
         const data = await response.json()
 
         if(data.status === 'ok') {
-          // history.push('/login')
+          alert('User created')
+          navigate('/login')
         }
 
         console.log(data)
