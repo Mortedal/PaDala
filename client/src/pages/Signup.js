@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 // import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -19,6 +19,14 @@ function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [cpassword, setcPassword] = useState('')    
+
+
+  useEffect(()=>{
+    const auth = localStorage.getItem('user');
+    if (auth) {
+      navigate('/')
+    }
+  })
 
     async function registerUser(event) {
        event.preventDefault()
