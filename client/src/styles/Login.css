@@ -13,108 +13,37 @@
   }
   
   .leftside {
-    flex: 50%;
+    flex: 40%;
     display: flex;
-    justify-content: center;
     padding: 20px;
-    max-height:100%;
+    height: 70%;
+    max-width: 60%;
   }
 
   .rightside {
-    flex: 50%;
+    flex: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     max-height:100%;
+    max-height:100%;
   }
 
-  .headerContainer {
-    width: auto;
-    margin-left: 50px;
-    padding: 90px;
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
+  .loginBox{
+    background-color: #eeeeee; 
+    padding: 70px;
+    border-radius: 10px;
+  }
+  .loginBox button{
+    margin-top: 40px;
+    color: #ffffff; 
+    background-color: #000000; 
+    border: 20px;
+    width: 100%;
+  }
+  .loginBox button:hover{
+    color: #00eeff; 
+    background-color: #000000; 
   }
   
-  .headerContainer h1 {
-    justify-content: center;
-    align-items: center;
-    font-size: 90px;
-    height: 50px;
-    font-weight: 50;
-    color: black;
-  }
-  
-  .headerContainer p {
-    padding: 0;
-    font-size: 40px;
-    font-weight: lighter;
-    color: black;
-  }
-  
-  .headerContainer button {
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: center;
-    background-color: #121619;
-    height: 50px;
-    width: 180px;
-    color: #56c6d8;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  
-  .headerContainer button:hover {
-    background-color: #000000;
-    cursor: pointer;
-    transition: 0.3s ease-in;
-  }
-  
-  @media only screen and (max-width: 650px) {
-    .home {
-      justify-content: center;
-      align-items: center;
-    }
-    .headerContainer h1, .headerContainer p {
-        justify-content: center;
-    }
-  
-    .headerContainer {
-      margin-left: 0px;
-      border-radius: 10px;
-      padding: 10px;
-      width: 80%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background-color: #121619;
-      color: white;
-    }
-  
-    .headerContainer h1 {
-      font-size: 40px;
-      height: 30px;
-      color: white;
-    }
-  
-    .headerContainer p {
-      font-size: 30px;
-      color: white;
-    }
-  
-    .headerContainer button {
-      background-color: white;
-      color: #121619;
-      margin-bottom: 30px;
-    }
-  
-    .headerContainer button:hover {
-      background-color: rgb(255, 0, 0);
-      color: #121619;
-    }
-  }

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import BannerPic from '../assets/bannerPic.png'
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
+import { Parallax } from 'react-parallax';
 import '../styles/Home.css'
 
 function Home() {
@@ -13,8 +14,8 @@ function Home() {
         
             <h1>Pa-Dala</h1><br/>
             <p>Erranding Service</p>
-            <Link to ="/login">
-            <Button variant="outline-dark">Log-in</Button>
+            <Link to ="/login" style={{ textDecoration: 'none' }}>
+            <Button variant='contained' color='secondary'>Log-in</Button>
             </Link>
         </div>
     </div>
