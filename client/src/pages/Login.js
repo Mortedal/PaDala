@@ -27,6 +27,13 @@ function Login() {
   })
   
   const data = await response.json()
+
+  if (data.user) {
+    alert('Login Succesfull')
+    window.location.href = '/service'
+  } else {
+    alert ('check your credentials')
+  }
   
   console.log(data)
   }
