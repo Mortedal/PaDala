@@ -26,6 +26,20 @@ function App() {
       </Routes>
     <Footer />
     </Router>
+
+    {/*-------------------------------for design-------------------------------------------------*/}
+
+       {/* <Router>
+    <Navbar />
+    <Routes>
+      <Route path='/dashboard' exact element={<Dashboard/>}/>
+      <Route path='/' exact element={<Home/>}/>
+      <Route path='/about' exact element={<About/>}/>
+      <Route path='/signup' exact element={<Signup/>}/>
+      <Route path='/login' exact element={<Login/>}/>
+      </Routes>
+    <Footer />
+    </Router> */}
    </div>
 }
 
