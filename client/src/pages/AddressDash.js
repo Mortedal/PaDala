@@ -6,7 +6,7 @@ function Dashboard() {
         
         <Sidebar />
         <div className='dashbox'>
-        <p>This is Dashboard</p>
+        <p>This is Address</p>
         </div>
     </div>
     )   

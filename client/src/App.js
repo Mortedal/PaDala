@@ -9,6 +9,10 @@ import Signup from './pages/Signup';
 import Services from './pages/Services';
 import About from './pages/About';  
 import Dashboard from './pages/Dashboard';  
+import ProfileDash from './pages/ProfileDash';
+import TransactionsDash from './pages/TransactionsDash';
+import AddressDash from './pages/AddressDash';
+import FavoriteDash from './pages/FavoriteDash';
 import PopupForm from './components/PopupForm';
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -19,6 +23,10 @@ function App() {
     <Routes>
       <Route element={<Authen/>}>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
+      <Route path='/profile' exact element={<ProfileDash/>}/>
+      <Route path='/transaction' exact element={<TransactionsDash/>}/>
+      <Route path='/address' exact element={<AddressDash/>}/>
+      <Route path='/favorite' exact element={<FavoriteDash/>}/>
       </Route>
       <Route path='/' exact element={<Home/>}/>
       <Route path='/services' exact element={<Services/>}/>
@@ -40,6 +48,10 @@ function App() {
       <Route path='/about' exact element={<About/>}/>
       <Route path='/signup' exact element={<Signup/>}/>
       <Route path='/login' exact element={<Login/>}/>
+      <Route path='/profile' exact element={<ProfileDash/>}/>
+      <Route path='/transaction' exact element={<TransactionsDash/>}/>
+      <Route path='/address' exact element={<AddressDash/>}/>
+      <Route path='/favorite' exact element={<FavoriteDash/>}/>
       </Routes>
     <Footer />
     </Router> */}
