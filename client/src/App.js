@@ -9,7 +9,7 @@ import Signup from './pages/Signup';
 import Services from './pages/Services';
 import About from './pages/About';  
 import Dashboard from './pages/Dashboard';  
-
+import PopupForm from './components/PopupForm';
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
@@ -25,6 +25,7 @@ function App() {
       <Route path='/about' exact element={<About/>}/>
       <Route path='/signup' exact element={<Signup/>}/>
       <Route path='/login' exact element={<Login/>}/>
+      <Route path='/popupform' exact element={<PopupForm/>}/>
       </Routes>
     <Footer />
     </Router>

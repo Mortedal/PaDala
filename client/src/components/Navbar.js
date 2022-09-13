@@ -35,7 +35,7 @@ const logout = () => {
          <Link to ="/about"> About  </Link>
          <Link to ="/dashboard"> Dashboard  </Link>
 
-         {auth ? <Link onClick={logout} to ="/"> Logout </Link>:<Link to ="/login"> Login  </Link>}
+         {auth ? <Link onClick={logout} to ="/"> Logout </Link> : <Link to ="/login"> Login  </Link>}
          
          </div>
         </div>

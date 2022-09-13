@@ -1,5 +1,5 @@
 import React from "react";
-import pdlogo from "../assets/riderlandscape.jpg";
+import pdlogo from "../assets/rider.jpg";
 import "../styles/About.css";
 import { Parallax } from 'react-parallax';
 
