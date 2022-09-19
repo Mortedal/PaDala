@@ -46,7 +46,7 @@ app.post('/api/login', async (req, res) => {
 
             }, 'secret123')
 
-            return res.json({ status: 'ok', user: token, name: user.name,})
+            return res.json({ status: 'ok', user: token, name: user.name})
         } else {
             return res.json({ status: 'error', user: false})
         }  
@@ -58,20 +58,34 @@ app.post('/api/order', async (req, res) => {
     console.log(req.body)
     try {
         await Order.create({
+            username: req.body.username,
             typeoferrand: req.body.typeoferrand,
             storename: req.body.storename,
             storeaddress: req.body.storeaddress,
             useraddress: req.body.useraddress,
             deliverylocation: req.body.deliverylocation,
             pickuptime: req.body.pickuptime,
-            request: req.body.request,
             cellnum: req.body.cellnum,
+            request: req.body.request,
+
         })
         res.json({ status: 'ok'})
     } catch (err) {
         res.json({ status: 'error ', error: 'errrrr'})
     }
 })
+
+// app.post('/api/userdata', async (req, res) => {
+//     const {token} = req.body;
+//     try {
+//         const user = jwt.verify(token, 'secret123')
+//         const useremail = user.email;
+//         const username = user.name;
+//         res.json({ status: 'ok'})
+//     } catch (err) {
+//         res.json({ status: 'error ', error: 'invalid token'})
+//     }
+// })
 
 app.listen(1337, () => {
     console.log('Server started  on 1337')
