@@ -7,31 +7,13 @@ const PopupForm = ({open,onClose}) => {
   return (
     <div className='modalContainer'>
         <div className='modalRight'>
-            <h3>Food/Grocery</h3>
+            <h3>Custom Errand</h3>
         <div>
             <TextField
-              placeholder="Name of Store"
+              placeholder="Address"
               type="text"
               style={{width:300}}
               />
-            <br/><br/>
-            <TextField
-              placeholder="Store Address"
-              type="text"
-              style={{width:300}}
-              />
-            <br/><br/>
-            <TextField
-              placeholder="Address to Deliver to"
-              type="text"
-              style={{width:300}}
-              />
-              <br/>
-              <input
-              type="radio"
-              value="address"
-            />
-            default address
             <br/><br/>
             <TextField
               placeholder="Cellphone Number"
@@ -40,10 +22,11 @@ const PopupForm = ({open,onClose}) => {
               />
             <br/><br/>
             <TextField
-              placeholder="Time of Delivery"
+              placeholder="Request"
               type="text"
-              style={{width:300}}
+              style={{width:500}}
               />
+            
             
               
          </div>

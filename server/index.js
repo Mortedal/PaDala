@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import User from './models/usermodel.js';
+import Order from './models/errandorder.js';
 import jwt from 'jsonwebtoken';
 const app = express();
 
@@ -49,6 +50,27 @@ app.post('/api/login', async (req, res) => {
         } else {
             return res.json({ status: 'error', user: false})
         }  
+})
+
+//----------------------------------------------------------------------------------------------------
+
+app.post('/api/order', async (req, res) => {
+    console.log(req.body)
+    try {
+        await Order.create({
+            typeoferrand: req.body.typeoferrand,
+            storename: req.body.storename,
+            storeaddress: req.body.storeaddress,
+            useraddress: req.body.useraddress,
+            deliverylocation: req.body.deliverylocation,
+            pickuptime: req.body.pickuptime,
+            request: req.body.request,
+            cellnum: req.body.cellnum,
+        })
+        res.json({ status: 'ok'})
+    } catch (err) {
+        res.json({ status: 'error ', error: 'errrrr'})
+    }
 })
 
 app.listen(1337, () => {
