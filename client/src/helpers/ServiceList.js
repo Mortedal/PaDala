@@ -17,7 +17,8 @@ export const ServiceList = [
     {
     name: "Custom Errand",
     image: Errand
-    }
+    },
+    
 ]
 
 export const PartnerList = [

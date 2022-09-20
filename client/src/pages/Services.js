@@ -78,9 +78,9 @@ function Services() {
         
         <div>
           
-          <PopupForm open={openModal} onClose={() => setOpenModal(false)}/>
+          {/* <PopupForm open={openModal} onClose={() => setOpenModal(false)}/>
           <PopupDeliv open={openModal2} onClose={() => setOpenModal2(false)}/>
-          <PopupErrand open={openModal3} onClose={() => setOpenModal3(false)}/>
+          <PopupErrand open={openModal3} onClose={() => setOpenModal3(false)}/> */}
         </div>
        
     </div>

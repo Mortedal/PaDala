@@ -10,7 +10,6 @@ const PopupForm = ({open,onClose}) => {
   const [cellnum, setCellnum] = useState('')
   const [storename, setStorename] = useState('')
   
-
   const token = localStorage.getItem('user')
 
   const username = JSON.parse(token).name
@@ -102,8 +101,7 @@ const PopupForm = ({open,onClose}) => {
               style={{width:300}}
               />
             
-              
-         
+   
          <br/><br/>
                 <div className='btnContainer'>
                     <Button className='btnPrimary' type="submit">

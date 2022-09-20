@@ -61,7 +61,7 @@ const logout = () => {
     //           <Link to ="/"> Home </Link>
     //           <Link to ="/services"> Services </Link>
     //           <Link to ="/about"> About  </Link>
-    //           <Link to ="/dashboard"> Dashboard  </Link>
+    //           <Link to ="/profile"> Dashboard  </Link>
     //           {auth ? <Link onClick={logout} to ="/"> Logout </Link>:<Link to ="/login"> Login  </Link>}
               
     //           <button onClick={toggleNavbar}>
@@ -111,7 +111,7 @@ const logout = () => {
               <Link to ="/"> Home </Link>
               <Link to ="/services"> Services </Link>
               <Link to ="/about"> About  </Link>
-              <Link to ="/dashboard"> Dashboard  </Link>
+              <Link to ="/profile"> Dashboard  </Link>
               <Link to ="/login"> Login  </Link>
               
               <button onClick={toggleNavbar}>
