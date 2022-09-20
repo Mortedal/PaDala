@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react'
+import {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 const PopupForm = ({open,onClose}) => {
 
+  const [deliverylocation, setDeliverylocation] = useState('')
   const [useraddress, setUseraddress] = useState('')
-  const [storeaddress, setStoreaddress] = useState('')
   const [pickuptime, setPickuptime] = useState('')
   const [cellnum, setCellnum] = useState('')
-  const [storename, setStorename] = useState('')
   
 
   const token = localStorage.getItem('user')
 
   const username = JSON.parse(token).name
 
-  const typeoferrand = 'Food/Grocery'
+  const typeoferrand = 'Delivery'
   
 
   async function orderErrand(event) {
@@ -29,8 +29,7 @@ const PopupForm = ({open,onClose}) => {
          body: JSON.stringify({
              username,
              typeoferrand,
-             storename,
-             storeaddress,
+             deliverylocation,
              useraddress,
              cellnum,
              pickuptime,
@@ -48,34 +47,19 @@ const PopupForm = ({open,onClose}) => {
      console.log(data)
  }
 
-  
-  if(!open) return null
+
+    if(!open) return null
+
 
   return (
     <div className='modalContainer'>
         <div className='modalRight'>
-            <h3>Food/Grocery</h3>
+            <h3>Delivery</h3>
             <form onSubmit={orderErrand}>
-            <TextField
-              value={storename}
-              onChange={(e) => setStorename(e.target.value)}
-              placeholder="Name of Store"
-              type="text"
-              style={{width:300}}
-              />
-            <br/><br/>
-            <TextField
-              value={storeaddress}
-              onChange={(e) => setStoreaddress(e.target.value)}
-              placeholder="Store Address"
-              type="text"
-              style={{width:300}}
-              />
-            <br/><br/>
             <TextField
               value={useraddress}
               onChange={(e) => setUseraddress(e.target.value)}
-              placeholder="Address to Deliver to"
+              placeholder="Your Location"
               type="text"
               style={{width:300}}
               />
@@ -85,6 +69,14 @@ const PopupForm = ({open,onClose}) => {
               value="address"
             />
             default address
+            <br/><br/>
+            <TextField
+              value={deliverylocation}
+              onChange={(e) => setDeliverylocation(e.target.value)}
+              placeholder="Delivery Location"
+              type="text"
+              style={{width:300}}
+              />
             <br/><br/>
             <TextField
               value={cellnum}
@@ -97,27 +89,27 @@ const PopupForm = ({open,onClose}) => {
             <TextField
               value={pickuptime}
               onChange={(e) => setPickuptime(e.target.value)}
-              placeholder="Time of Delivery"
+              placeholder="Time of Pick-Up"
               type="text"
               style={{width:300}}
               />
             
-              
-         
-         <br/><br/>
+        <br/><br/>
                 <div className='btnContainer'>
                     <Button className='btnPrimary' type="submit">
                          <span className='bold'>Place Order</span>
                          
                     </Button>
                     <button className='btnOutline' onClick={onClose}>
-                         <span className='bold'>Cancel Order</span>
+                         <span className='bold' >Cancel Order</span>
                     </button>
                 </div>
-                </form>
+              </form>
          </div>
-     </div>
+      </div>
+
   ) 
 }
+
 
 export default PopupForm
