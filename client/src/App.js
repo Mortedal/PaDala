@@ -18,7 +18,7 @@ import PopupForm from './components/PopupForm';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return<div className="App"> 
-    <Router>
+    {/* <Router>
     <Navbar />
     <Routes>
       <Route element={<Authen/>}>
@@ -36,25 +36,27 @@ function App() {
       <Route path='/popupform' exact element={<PopupForm/>}/>
       </Routes>
     <Footer />
-    </Router>
+    </Router> */}
 
     {/*-------------------------------for design-------------------------------------------------*/}
 
-       {/* <Router>
+       <Router>
     <Navbar />
     <Routes>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
       <Route path='/' exact element={<Home/>}/>
       <Route path='/about' exact element={<About/>}/>
       <Route path='/signup' exact element={<Signup/>}/>
+      <Route path='/services' exact element={<Services/>}/>
       <Route path='/login' exact element={<Login/>}/>
       <Route path='/profile' exact element={<ProfileDash/>}/>
       <Route path='/transaction' exact element={<TransactionsDash/>}/>
       <Route path='/address' exact element={<AddressDash/>}/>
       <Route path='/favorite' exact element={<FavoriteDash/>}/>
+      <Route path='/popupform' exact element={<PopupForm/>}/>
       </Routes>
     <Footer />
-    </Router> */}
+    </Router>
    </div>
 }
 
