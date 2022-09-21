@@ -12,7 +12,6 @@ const PopupForm = ({open,onClose}) => {
   
 
   const token = localStorage.getItem('user')
-
   const username = JSON.parse(token).name
 
   const typeoferrand = 'Custom'

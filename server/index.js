@@ -46,7 +46,8 @@ app.post('/api/login', async (req, res) => {
 
             }, 'secret123')
 
-            return res.json({ status: 'ok', user: token, name: user.name})
+            return res.json({ status: 'ok', user: token, email: user.email, defaultaddress:user.defaultaddress, cellnum:user.cellnum, name:user.name, password:user.password, role:user.role})
+                
         } else {
             return res.json({ status: 'error', user: false})
         }  
@@ -75,17 +76,46 @@ app.post('/api/order', async (req, res) => {
     }
 })
 
-// app.post('/api/userdata', async (req, res) => {
-//     const {token} = req.body;
-//     try {
-//         const user = jwt.verify(token, 'secret123')
-//         const useremail = user.email;
-//         const username = user.name;
-//         res.json({ status: 'ok'})
-//     } catch (err) {
-//         res.json({ status: 'error ', error: 'invalid token'})
-//     }
-// })
+//-------------------------------------------------------------------------------
+
+
+app.post('/api/updateuser', async (req, res) => {
+    console.log(req.body)
+    try {
+
+
+        await User.findOneAndUpdate(
+            {
+                email:req.body.email
+            },
+            { $set: { name: req.body.name,
+                address: req.body.address,
+                cellnum: req.body.cellnum,
+                defaultaddress: req.body.defaultaddress,}
+           
+    })
+       
+        return res.json({ status: 'ok'})
+    } catch (err) {
+        res.json({ status: 'error ', error: 'invalid token'})
+    }
+})
+
+app.post('/api/getUserinfo', async (req, res) => {
+    console.log(req.body)
+    try {
+        const user = await User.findOne(
+            {
+                email:req.body.email
+            })
+       
+        return res.json({ userInfo:user })
+    } catch (err) {
+        res.json({ status: 'error ', error: 'invalid token'})
+    }
+})
+
+        
 
 app.listen(1337, () => {
     console.log('Server started  on 1337')

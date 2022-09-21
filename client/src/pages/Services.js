@@ -2,6 +2,7 @@ import React from 'react'
 import {ServiceList} from "../helpers/ServiceList"
 import {PartnerList} from "../helpers/ServiceList"
 import ServiceItem from "../components/ServiceItem"
+import Popup from '../components/Popup'
 import "../styles/Services.css";
 import {useState} from 'react';
 import PopupForm from '../components/PopupForm';
@@ -10,18 +11,25 @@ import PopupDeliv from '../components/PopupDeliv'
 import PopupErrand from '../components/PopupErrand'
 
 function Services() {
-  const [setButtonPopup] = useState(false);
+
+  const auth = localStorage.getItem('user');
+   
+  
+  const [buttonPopup,setButtonPopup] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
   const [openModal3, setOpenModal3] = useState(false);
 
 
-  // const auth = localStorage.getItem('user');
 
   return (
-    <div className='services' >
+    <div>
+      
+      {auth ? 
+      
+      <div className='services' >
       <div className='serviceTitle'><h1>Services</h1></div>
-     
+         
          <div className='serviceList'>
         {ServiceList.slice(0,1).map((serviceItem, key) =>{
             return <button className='no-padding' onClick={() => [setOpenModal(true), setOpenModal2(false), setOpenModal3(false)]}>
@@ -78,15 +86,68 @@ function Services() {
         
         <div>
           
-          {/* <PopupForm open={openModal} onClose={() => setOpenModal(false)}/>
+          <PopupForm open={openModal} onClose={() => setOpenModal(false)}/>
           <PopupDeliv open={openModal2} onClose={() => setOpenModal2(false)}/>
-          <PopupErrand open={openModal3} onClose={() => setOpenModal3(false)}/> */}
+          <PopupErrand open={openModal3} onClose={() => setOpenModal3(false)}/>
         </div>
        
     </div>
-    
+      
+      : //---------------------------not logged in-----------------------------------------//
+      
+      <div className='services' >
+      <div className='serviceTitle'><h1>Services</h1></div>
+         
+      <div className='serviceList'>
+        {ServiceList.map((serviceItem, key) =>{
+            return <button className='no-padding' onClick={() => setButtonPopup(true)} >
+              
+             
 
-  );
-}
+        <ServiceItem
+            key={key}
+            image={serviceItem.image}
+            name={serviceItem.name}            
+            />
+                </button>
+        
+            
+                
+        })} 
+        <Popup trigger={buttonPopup} setTrigger = {setButtonPopup}>
+          <h3>Sorry</h3>
+          <p>You need to login first</p>
+        </Popup >
+
+
+      </div>
+      
+     
+      <div className='serviceTitle'><h1>Partnered Stores</h1></div>
+      {PartnerList.map((serviceItem, key) =>{
+            return <button className='no-padding' onClick={() => setButtonPopup(true)}>
+              <ServiceItem
+            key={key}
+            image={serviceItem.image}
+            name={serviceItem.name}            
+            />
+            </button> 
+
+
+        })}
+
+        
+
+       
+    </div>
+    
+    }
+
+
+    </div>
+  ); 
+
+
+} 
 
 export default Services

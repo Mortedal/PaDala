@@ -34,7 +34,7 @@ function Login() {
   })
   
   const data = await response.json()
-
+  localStorage.setItem("user", JSON.stringify(data))
   if (data.user) {
     alert('Login Succesfull')   
     localStorage.setItem("user", JSON.stringify(data))
