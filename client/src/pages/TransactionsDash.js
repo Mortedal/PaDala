@@ -1,10 +1,23 @@
 import React from 'react'
 import Sidebar from "../components/Sidebar.js";
+import SidebarAdmin from "../components/SidebarAdmin"
+import SidebarRider from "../components/SidebarRider"
+
+
 function Dashboard() {
+
+    const auth = localStorage.getItem('user');
+
     return (
     <div className="Dashboard">
         
         <Sidebar />
+        {
+               JSON.parse(auth).role === "admin" ? <SidebarAdmin />: ''
+            }  
+                    {
+               JSON.parse(auth).role === "rider" ? <SidebarRider />: ''
+            }  
         <div className='dashbox'>
         <h1>Recent Transactions</h1>
         <ul>

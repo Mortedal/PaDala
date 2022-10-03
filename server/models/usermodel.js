@@ -7,7 +7,8 @@ const User = new mongoose.Schema({
     role: { type: String},
     address: { type: String},
     cellnum: { type: String},
-    defaultaddress: { type: String},
+    defaultaddress: { type: String}
+
 },
 {
     collection: 'user-data'

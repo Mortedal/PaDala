@@ -1,12 +1,12 @@
 import React from 'react'
 import "../styles/Dashboard.css";
-import { SidebarData } from "./SidebarData";
+import { SidebarDataRider } from "./SidebarDataRider";
 
 function Sidebar() {
   return (
-    <div className="Sidebar">
+    <div className="SidebarExtra">
         <ul className="SidebarList">
-            {SidebarData.map((val, key) => {
+            {SidebarDataRider.map((val, key) => {
                 return (
                   <div>
                     <li 

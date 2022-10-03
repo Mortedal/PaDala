@@ -51,6 +51,7 @@ const logout = () => {
          <Link to ="/"> Home </Link>
          <Link to ="/services"> Services </Link>
          <Link to ="/about"> About  </Link>
+         
 
          {auth ? <Link onClick={logout} to ="/"> Logout </Link>:<Link to ="/login"> Login  </Link>}
          
@@ -64,12 +65,14 @@ const logout = () => {
               <Link to ="/"> Home </Link>
               <Link to ="/services"> Services </Link>
               <Link to ="/about"> About  </Link>
-              <Link to ="/profile"> Dashboard  </Link>
               {
-               JSON.parse(auth).role === "admin" ? <Link to ="/admindashboard"> Admin Dashboard  </Link>: ''
+               JSON.parse(auth).role === "" ? <Link to ="/profile"> Dashboard  </Link>: ''
               }  
               {
-               JSON.parse(auth).role === "rider" ? <Link to ="/"> Rider Dashboard  </Link>: ''
+               JSON.parse(auth).role === "admin" ? <Link to ="/profile"> Admin Dashboard  </Link>: ''
+              }  
+              {
+               JSON.parse(auth).role === "rider" ? <Link to ="/profile"> Rider Dashboard  </Link>: ''
               }  
               {auth ? <Link onClick={logout} to ="/"> Logout </Link>:<Link to ="/login"> Login  </Link>}
 

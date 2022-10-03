@@ -13,7 +13,7 @@ const PopupForm = ({open,onClose}) => {
 
   const token = localStorage.getItem('user')
 
-  const username = JSON.parse(token).name
+  const email = JSON.parse(token).email
 
   const typeoferrand = 'Delivery'
   
@@ -27,7 +27,7 @@ const PopupForm = ({open,onClose}) => {
              'Content-Type': 'application/json',
          },
          body: JSON.stringify({
-             username,
+             email,
              typeoferrand,
              deliverylocation,
              useraddress,

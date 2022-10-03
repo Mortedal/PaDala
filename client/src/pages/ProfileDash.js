@@ -1,5 +1,7 @@
 import React from 'react'
 import Sidebar from "../components/Sidebar.js";
+import SidebarAdmin from "../components/SidebarAdmin.js";
+import SidebarRider from "../components/SidebarRider.js";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useNavigate} from 'react-router-dom';
@@ -15,11 +17,12 @@ function Dashboard() {
   const daddress = JSON.parse(temp).defaultaddress
   const cellnum = JSON.parse(temp).cellnum
 
+  const auth = localStorage.getItem('user');
 
   async function getUser(event) {
     event.preventDefault()
 
-     const response = await fetch('http://localhost:1337/api/getUserinfo', {
+     const response = await fetch('http://localhost:5000/api/getUserinfo', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
@@ -44,6 +47,13 @@ function Dashboard() {
     <div className="Dashboard">
         
         <Sidebar />
+            {
+               JSON.parse(auth).role === "admin" ? <SidebarAdmin />: ''
+            }  
+                        {
+               JSON.parse(auth).role === "rider" ? <SidebarRider />: ''
+            }  
+
         <div className='dashbox'>
         <h1>Your Profile</h1>
              <TextField

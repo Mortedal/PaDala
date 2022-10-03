@@ -3,6 +3,8 @@ import Sidebar from "../components/Sidebar.js";
 import {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import SidebarAdmin from "../components/SidebarAdmin"
+import SidebarRider from "../components/SidebarRider"
 
 function Dashboard() {
 
@@ -15,11 +17,13 @@ function Dashboard() {
     const name2 = JSON.parse(temp).userInfo.name
     const daddress = JSON.parse(temp).userInfo.defaultaddress
     const cellnum2 = JSON.parse(temp).userInfo.cellnum
+
+    const auth = localStorage.getItem('user');
   
     async function updateUser(event) {
       event.preventDefault()
   
-       const response = await fetch('http://localhost:1337/api/updateuser', {
+       const response = await fetch('http://localhost:5000/api/updateuser', {
            method: 'POST',
            headers: {
                'Content-Type': 'application/json',
@@ -46,6 +50,13 @@ function Dashboard() {
         <div className="Dashboard">
         
         <Sidebar />
+
+            {
+               JSON.parse(auth).role === "admin" ? <SidebarAdmin />: ''
+            }  
+                        {
+               JSON.parse(auth).role === "rider" ? <SidebarRider />: ''
+            }  
         <div className='dashbox'>
         <h1>Edit Profile</h1>
         <form onSubmit={updateUser}>

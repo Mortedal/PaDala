@@ -1,12 +1,12 @@
 import React from 'react'
 import "../styles/Dashboard.css";
-import { SidebarData } from "./SidebarData";
+import { SidebarDataAdmin } from "./SidebarDataAdmin";
 
 function Sidebar() {
   return (
-    <div className="Sidebar">
+    <div className="SidebarExtra">
         <ul className="SidebarList">
-            {SidebarData.map((val, key) => {
+            {SidebarDataAdmin.map((val, key) => {
                 return (
                   <div>
                     <li 
@@ -17,7 +17,7 @@ function Sidebar() {
                      }}
                     >
                      {" "}
-                    <div id="icon">{val.icon}</div> <div id="title">{val.title}</div>
+                    <div id="icon">{val.icon}</div> <div id="title">{val.title}</div><div id="icon">{val.icon}</div> 
                     </li>
                     </div>
                    );
