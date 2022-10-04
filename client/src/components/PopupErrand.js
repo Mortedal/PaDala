@@ -20,7 +20,7 @@ const PopupForm = ({open,onClose}) => {
   async function orderErrand(event) {
     event.preventDefault()
 
-     const response = await fetch('http://localhost:1337/api/order', {
+     const response = await fetch('http://localhost:5000/api/order', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
