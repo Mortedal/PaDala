@@ -123,15 +123,6 @@ app.post('/api/getUserinfo', async (req, res) => {
     }
 })
 
-<<<<<<< HEAD
-app.listen(1337, () => {
-    console.log('Server started  on 1337')
-    
-})
-// const CONNECTION_URL = 'mongodb+srv://kimsalgado:salgadokim@cluster0.vvax1cj.mongodb.net/?retryWrites=true&w=majority';
-// const PORT = process.env.PORT || 5000;
-=======
         
 
->>>>>>> 07c0b6627f35f75eba757f781e32f503fd0441f7
 
