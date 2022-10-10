@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const Order = new mongoose.Schema({
-    username: { type: String, required: true },
+    email: { type: String, required: true },
     typeoferrand: { type: String},
     storename: { type: String},
     storeaddress: { type: String},

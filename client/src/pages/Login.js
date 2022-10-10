@@ -22,7 +22,7 @@ function Login() {
   async function loginUser(event) {
     event.preventDefault()
   
-  const response = await fetch('http://localhost:1337/api/login', {
+  const response = await fetch('http://localhost:5000/api/login', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function Login() {
   if (data.user) {
     alert('Login Succesfull')   
     localStorage.setItem("user", JSON.stringify(data))
-    window.location.href = '/dashboard'
+    window.location.href = '/profile'
   } else {
     alert ('check your credentials')
   }

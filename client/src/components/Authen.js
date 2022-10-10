@@ -6,5 +6,5 @@ const Authen= () => {
     
     return auth ?<Outlet />:<Navigate to=""/>
 }
-
+//asdasd
 export default Authen

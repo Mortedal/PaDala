@@ -12,7 +12,7 @@ const PopupForm = ({open,onClose}) => {
   
   const token = localStorage.getItem('user')
 
-  const username = JSON.parse(token).name
+  const email = JSON.parse(token).email
 
   const typeoferrand = 'Food/Grocery'
   
@@ -20,13 +20,13 @@ const PopupForm = ({open,onClose}) => {
   async function orderErrand(event) {
     event.preventDefault()
 
-     const response = await fetch('http://localhost:1337/api/order', {
+     const response = await fetch('http://localhost:5000/api/order', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
          },
          body: JSON.stringify({
-             username,
+             email,
              typeoferrand,
              storename,
              storeaddress,

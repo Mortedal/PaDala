@@ -9,7 +9,14 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/dbpadala')
+const CONNECTION_URL = 'mongodb+srv://PaDala:padalapassword123@cluster0.9itxfxl.mongodb.net/?retryWrites=true&w=majority';
+
+
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
+.catch((error) => console.log(error.message));
 
 app.post('/api/register', async (req, res) => {
     console.log(req.body)
@@ -18,6 +25,7 @@ app.post('/api/register', async (req, res) => {
             name: req.body.name,
             email:req.body.email,
             password:req.body.password,
+            role:req.body.role,
             
         })
         res.json({ status: 'ok'})
@@ -59,7 +67,7 @@ app.post('/api/order', async (req, res) => {
     console.log(req.body)
     try {
         await Order.create({
-            username: req.body.username,
+            email: req.body.email,
             typeoferrand: req.body.typeoferrand,
             storename: req.body.storename,
             storeaddress: req.body.storeaddress,
@@ -115,13 +123,15 @@ app.post('/api/getUserinfo', async (req, res) => {
     }
 })
 
+<<<<<<< HEAD
 app.listen(1337, () => {
     console.log('Server started  on 1337')
     
 })
 // const CONNECTION_URL = 'mongodb+srv://kimsalgado:salgadokim@cluster0.vvax1cj.mongodb.net/?retryWrites=true&w=majority';
 // const PORT = process.env.PORT || 5000;
+=======
+        
 
-// mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-// .then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
-// .catch((error) => console.log(error.message));
+>>>>>>> 07c0b6627f35f75eba757f781e32f503fd0441f7
+

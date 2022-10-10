@@ -18,8 +18,10 @@ function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [cpassword, setcPassword] = useState('')    
+  const [cpassword, setcPassword] = useState('')      
 
+
+  const role = "";
 
   useEffect(()=>{
     const auth = localStorage.getItem('user');
@@ -31,7 +33,7 @@ function Signup() {
     async function registerUser(event) {
        event.preventDefault()
 
-        const response = await fetch('http://localhost:1337/api/register', {
+        const response = await fetch('http://localhost:5000/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,6 +43,7 @@ function Signup() {
                 email,
                 password,
                 cpassword,
+                role,
             }),
         })
 
@@ -108,7 +111,7 @@ function Signup() {
               <br/> 
               
             {/* <Link to ="/" style={{ textDecoration: 'none' }}> */}
-            <Button type="submit"> Register </Button> 
+            <Button type="submit" > Register </Button> 
             </form>
             {/* </Link> */}
             
