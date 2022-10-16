@@ -1,11 +1,11 @@
 .Dashboard {
-    padding-top:10%;
+    padding-top:5%;
     padding-left: 20%;
     padding-right: 20%;
     padding-bottom: 10%;
     display: flex;
     width: 60vw;
-    height: 60vh;
+    height: 70vh;
 }
 
 .dashbox{
@@ -63,4 +63,19 @@
     flex: 70%;
 }
     
+.DivToScroll{   
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #3B3C3E;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+}
 
+.DivWithScroll{
+    height:120px;
+    overflow:scroll;
+    overflow-x:hidden;
+}

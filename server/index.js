@@ -1,22 +1,36 @@
-import express from 'express';
+import express, { response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import User from './models/usermodel.js';
 import Order from './models/errandorder.js';
+import getOrder from './models/getorder.js';
 import jwt from 'jsonwebtoken';
 const app = express();
+
+const router = express.Router();
 
 app.use(cors())
 app.use(express.json())
 
 const CONNECTION_URL = 'mongodb+srv://PaDala:padalapassword123@cluster0.9itxfxl.mongodb.net/?retryWrites=true&w=majority';
 
+var database
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
-.catch((error) => console.log(error.message));
+app.get('/', (req, res) => {
+    res.send('this is backend')
+})
+
+app.listen (port, () => {
+    mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true}, (err, result) => {
+        if (err) throw err
+        console.log('Server running on 5000')
+})
+})
+// .then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
+// .catch((error) => console.log(error.message))
+// database = result.db('test');
 
 app.post('/api/register', async (req, res) => {
     console.log(req.body)
@@ -109,6 +123,8 @@ app.post('/api/updateuser', async (req, res) => {
     }
 })
 
+//----------------------------------------------------------------------------------------------------
+
 app.post('/api/getUserinfo', async (req, res) => {
     console.log(req.body)
     try {
@@ -122,6 +138,19 @@ app.post('/api/getUserinfo', async (req, res) => {
         res.json({ status: 'error ', error: 'invalid token'})
     }
 })
+
+//----------------------------------------------------------------------------------------------------
+
+app.get('/api/getTrans', async (req, res) => {
+    console.log(req.body)
+    try {
+        const getTrans = await getOrder.find({})
+            res.send(getTrans)
+    } 
+    catch (error) {
+        return res.status(400).json({message: error})
+    }
+    });
 
         
 

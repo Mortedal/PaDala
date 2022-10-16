@@ -56,6 +56,7 @@ function Dashboard() {
 
         <div className='dashbox'>
         <h1>Your Profile</h1>
+        <p>Username</p>
              <TextField
              disabled
               value={name}
@@ -63,7 +64,8 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              
+              <p>Email</p>
               <TextField
               disabled
               value={email}
@@ -71,7 +73,8 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              
+              <p>Address</p>
               <TextField
               disabled
               value={daddress}
@@ -79,7 +82,8 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              
+              <p>Phone number</p>
               <TextField
               disabled
               value={cellnum}
@@ -88,7 +92,7 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              
               <div align={'center'}>
               <Button type="submit" className='btnPrimary'>Save</Button>
               <Button>Cancel</Button>

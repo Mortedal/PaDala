@@ -60,6 +60,7 @@ function Dashboard() {
         <div className='dashbox'>
         <h1>Edit Profile</h1>
         <form onSubmit={updateUser}>
+            <p>Username</p>
              <TextField
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -67,7 +68,7 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              <p>Email</p>
               <TextField
               disabled
               value={email}
@@ -76,7 +77,7 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              <p>Address</p>
               <TextField
               value={defaultaddress}
               onChange={(e) => setDefaultaddress(e.target.value)}
@@ -84,7 +85,7 @@ function Dashboard() {
               type="text"
               style={{width:500}}
               />
-              <br/><br/>
+              <p>Phone number</p>
               <TextField
               value={cellnum}
               onChange={(e) => setCellnum(e.target.value)}
