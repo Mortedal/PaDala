@@ -10,13 +10,7 @@ function Dashboard() {
 
     const auth = localStorage.getItem('user');
 
-    
-
     const [trans, setTrans] = useState ([])
-    const email = auth.email
-
-
-    
 
     useEffect(() => {
         const fetchdata = async() => {
@@ -29,25 +23,6 @@ function Dashboard() {
                 .catch(console.error)
                 
     
-    }, [])
-    useEffect(() => {
-        const fetchdata = async() => {
-                const data = await axios.get('http://localhost:5000/api/getTransSpec', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email
-                    }),
-                  })
-                console.log('transactions --- ', data.data)
-                setTrans(data.data)
-            }
-            fetchdata()
-                
-                .catch(console.error)
-                
     }, [])
 
 
@@ -83,41 +58,15 @@ function Dashboard() {
                 ))} */}
         <div>
         <ul>
-        {
-               JSON.parse(auth).role === "admin" ?
-               trans.map(tran=>(
-                <li key={tran._id}>
-                Email: {tran.email}<br/>
-                Type of errand: {tran.typeoferrand}<br/>
-                Store name: {tran.storename}<br/>
-                </li> 
-            ))
-            : ''
-            }  
-                    {
-               JSON.parse(auth).role === "rider" ?
-               trans.map(tran=>(
-                <li key={tran._id}>
-                Email: {tran.email}<br/>
-                Type of errand: {tran.typeoferrand}<br/>
-                Store name: {tran.storename}<br/>
-                </li> 
-            ))
-            : ''
-            }  
             {
-               JSON.parse(auth).role === "" ?
-               trans.map(tran=>(
+            trans.map(tran=>(
                 <li key={tran._id}>
                 Email: {tran.email}<br/>
                 Type of errand: {tran.typeoferrand}<br/>
                 Store name: {tran.storename}<br/>
                 </li> 
             ))
-            : ''
-            }  
-            
-            
+            }
         </ul>
         </div>
         </div>
