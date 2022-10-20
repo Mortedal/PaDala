@@ -141,16 +141,29 @@ app.post('/api/getUserinfo', async (req, res) => {
 
 //----------------------------------------------------------------------------------------------------
 
-app.get('/api/getTrans', async (req, res) => {
+app.get('/api/getTransSpec', async (req, res) => {
     console.log(req.body)
     try {
-        const getTrans = await getOrder.find({})
-            res.send(getTrans)
+        const getTransSpec = await getOrder.find({
+            email:req.body.email
+        })
+            res.send(getTransSpec)
     } 
     catch (error) {
         return res.status(400).json({message: error})
     }
     });
+
+    app.get('/api/getTrans', async (req, res) => {
+        console.log(req.body)
+        try {
+            const getTrans = await getOrder.find({})
+                res.send(getTrans)
+        } 
+        catch (error) {
+            return res.status(400).json({message: error})
+        }
+        });
 
         
 

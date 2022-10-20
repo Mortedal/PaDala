@@ -10,7 +10,13 @@ function Dashboard() {
 
     const auth = localStorage.getItem('user');
 
+    
+
     const [trans, setTrans] = useState ([])
+    const email = auth.email
+
+
+    
 
     useEffect(() => {
         const fetchdata = async() => {
@@ -24,18 +30,39 @@ function Dashboard() {
                 
     
     }, [])
+    useEffect(() => {
+        const fetchdata = async() => {
+                const data = await axios.get('http://localhost:5000/api/getTransSpec', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email
+                    }),
+                  })
+                console.log('transactions --- ', data.data)
+                setTrans(data.data)
+            }
+            fetchdata()
+                
+                .catch(console.error)
+                
+    }, [])
 
 
     return (
         
     <div className="Dashboard">
         
-        <Sidebar />
-        {
+             {
                JSON.parse(auth).role === "admin" ? <SidebarAdmin />: ''
             }  
-                    {
+                        {
                JSON.parse(auth).role === "rider" ? <SidebarRider />: ''
+            }  
+                                    {
+               JSON.parse(auth).role === "" ? <Sidebar />: ''
             }  
 
         <div className='dashbox'>
@@ -56,15 +83,41 @@ function Dashboard() {
                 ))} */}
         <div>
         <ul>
-            {
-            trans.map(tran=>(
+        {
+               JSON.parse(auth).role === "admin" ?
+               trans.map(tran=>(
                 <li key={tran._id}>
                 Email: {tran.email}<br/>
                 Type of errand: {tran.typeoferrand}<br/>
                 Store name: {tran.storename}<br/>
                 </li> 
             ))
-            }
+            : ''
+            }  
+                    {
+               JSON.parse(auth).role === "rider" ?
+               trans.map(tran=>(
+                <li key={tran._id}>
+                Email: {tran.email}<br/>
+                Type of errand: {tran.typeoferrand}<br/>
+                Store name: {tran.storename}<br/>
+                </li> 
+            ))
+            : ''
+            }  
+            {
+               JSON.parse(auth).role === "" ?
+               trans.map(tran=>(
+                <li key={tran._id}>
+                Email: {tran.email}<br/>
+                Type of errand: {tran.typeoferrand}<br/>
+                Store name: {tran.storename}<br/>
+                </li> 
+            ))
+            : ''
+            }  
+            
+            
         </ul>
         </div>
         </div>

@@ -46,12 +46,15 @@ function Dashboard() {
     return (
     <div className="Dashboard">
         
-        <Sidebar />
+
             {
                JSON.parse(auth).role === "admin" ? <SidebarAdmin />: ''
             }  
                         {
                JSON.parse(auth).role === "rider" ? <SidebarRider />: ''
+            }  
+                                    {
+               JSON.parse(auth).role === "" ? <Sidebar />: ''
             }  
 
         <div className='dashbox'>
