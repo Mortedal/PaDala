@@ -8,15 +8,19 @@ export const SidebarDataAdmin = [
     link: "/transaction",
   },
   {
-    title: "All Transactions",
-    link: "/alltransactions",
-  },
-  {
     title: "Customer Profiles",
-    link: "/customerprofile",
+    link: "/profile",
   },
   {
     title: "Rider Profiles",
-    link: "/riderprofile",
+    link: "/transaction",
+  },
+  {
+    title: "Edit User Roles",
+    link: "/address",
+  },
+  {
+    title: "Delete Users",
+    link: "/address",
   },
 ];

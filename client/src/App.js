@@ -15,6 +15,7 @@ import AllTransactions from "./pages/AllTransactions";
 import CustomerProfile from "./pages/CustomerProfile";
 import RiderProfile from "./pages/RiderProfile";
 import PopupForm from "./components/PopupForm";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -54,9 +55,9 @@ function App() {
         <Footer />
       </Router>
 
-      {/*-------------------------------for design-------------------------------------------------*/}
+    {/*-------------------------------for design-------------------------------------------------*/}
 
-      {/* <Router>
+    {/* <Router>
     <Navbar />
     <Routes>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
@@ -73,8 +74,7 @@ function App() {
       </Routes>
     <Footer />
     </Router> */}
-    </div>
-  );
+   </div>
 }
 
 export default App;
