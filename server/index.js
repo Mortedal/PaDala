@@ -4,6 +4,7 @@ import cors from "cors";
 import User from "./models/usermodel.js";
 import Order from "./models/errandorder.js";
 import getOrder from "./models/getorder.js";
+import getUsers from "./models/getusers.js";
 import jwt from "jsonwebtoken";
 const app = express();
 
@@ -168,6 +169,20 @@ app.get("/api/getTrans", async (req, res) => {
   try {
     const getTrans = await getOrder.find({});
     res.send(getTrans);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+//----------------------------------------------------------------------------------------------------
+
+app.get("/api/getUsers", async (req, res) => {
+  console.log(req.query);
+  try {
+    const getCust = await getUsers.find({
+      role: req.query.role,
+    });
+    res.send(getCust);
   } catch (error) {
     return res.status(400).json({ message: error });
   }
