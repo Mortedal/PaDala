@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
-import SidebarRider from "../components/SidebarRider";
+import SidebarRider from "../components/SidebarRider.js";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-function Dashboard() {
+function AllTransactions() {
   const auth = localStorage.getItem("user");
 
   const [trans, setTrans] = useState([]);
@@ -18,12 +18,7 @@ function Dashboard() {
   useEffect(() => {
     console.log("This is email when i ran", email);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getTransSpec", {
-        params: {
-          email,
-        },
-        //email
-      });
+      const data = await axios.get("http://localhost:5000/api/getTrans", {});
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };
@@ -37,7 +32,7 @@ function Dashboard() {
       {JSON.parse(auth).role === "" ? <Sidebar /> : ""}
 
       <div className="dashbox">
-        <h1>Recent Transactions</h1>
+        <h1>All Transactions</h1>
         <div>
           <ul>
             {trans.map((tran) => (
@@ -45,26 +40,18 @@ function Dashboard() {
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                      {tran.email === email ? tran.typeoferrand : ""}
+                      {tran.email}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {tran.email === email
-                        ? tran.storename === ""
-                          ? ""
-                          : "Store: " + tran.storename
-                        : ""}
+                      {"Type of Errand: " + tran.typeoferrand}
                       <br />
-                      {tran.email === email
-                        ? "Delivered to: " + tran.useraddress
-                        : ""}
+                      {"Store: " + tran.storename}
                       <br />
-                      {tran.email === email
-                        ? "Email: " + tran.storeaddress
-                        : ""}
+                      {"Delivered to: " + tran.useraddress}
                       <br />
-                      {tran.email === email
-                        ? "Time of order: " + tran.time
-                        : ""}
+                      {"Email: " + tran.storeaddress}
+                      <br />
+                      {"Time of order: " + tran.time}
                       <br />
                     </Typography>
                   </CardContent>
@@ -96,4 +83,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default AllTransactions;

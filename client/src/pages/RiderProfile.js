@@ -8,27 +8,26 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
-function Dashboard() {
+function RiderProfile() {
   const auth = localStorage.getItem("user");
 
-  const [trans, setTrans] = useState([]);
+  const [cust, setCust] = useState([]);
 
-  const email = JSON.parse(auth).email;
+  const role = "rider";
 
   useEffect(() => {
-    console.log("This is email when i ran", email);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getTransSpec", {
+      const data = await axios.get("http://localhost:5000/api/getUsers", {
         params: {
-          email,
+          role,
         },
         //email
       });
-      console.log("transactions --- ", data.data);
-      setTrans(data.data);
+      console.log("riders --- ", data.data);
+      setCust(data.data);
     };
     fetchdata().catch(console.error);
-  }, [email]);
+  }, [role]);
 
   return (
     <div className="Dashboard">
@@ -37,33 +36,29 @@ function Dashboard() {
       {JSON.parse(auth).role === "" ? <Sidebar /> : ""}
 
       <div className="dashbox">
-        <h1>Recent Transactions</h1>
+        <h1>Rider Profiles</h1>
         <div>
           <ul>
-            {trans.map((tran) => (
+            {cust.map((custs) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                      {tran.email === email ? tran.typeoferrand : ""}
+                      {custs.role === role ? custs.email : ""}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {tran.email === email
-                        ? tran.storename === ""
+                      {custs.role === role
+                        ? custs.name === ""
                           ? ""
-                          : "Store: " + tran.storename
+                          : "Name: " + custs.name
                         : ""}
                       <br />
-                      {tran.email === email
-                        ? "Delivered to: " + tran.useraddress
+                      {custs.role === role
+                        ? "Cellphone Number: " + custs.cellnum
                         : ""}
                       <br />
-                      {tran.email === email
-                        ? "Email: " + tran.storeaddress
-                        : ""}
-                      <br />
-                      {tran.email === email
-                        ? "Time of order: " + tran.time
+                      {custs.role === role
+                        ? "Default Address: " + custs.defaultaddress
                         : ""}
                       <br />
                     </Typography>
@@ -74,21 +69,21 @@ function Dashboard() {
             ))}
 
             {/* {trans.map((tran) => (
-              <div>
-                {tran.email === email ? "Email: " + tran.email : ""}
-                <br />
-                {tran.email === email
-                  ? "Type of Errand: " + tran.typeoferrand
-                  : ""}
-                <br />
-                {tran.email === email
-                  ? tran.storename === ""
-                    ? ""
-                    : "agoi: " + tran.storename
-                  : ""}
-                <br />
-              </div>
-            ))} */}
+                    <div>
+                      {tran.email === email ? "Email: " + tran.email : ""}
+                      <br />
+                      {tran.email === email
+                        ? "Type of Errand: " + tran.typeoferrand
+                        : ""}
+                      <br />
+                      {tran.email === email
+                        ? tran.storename === ""
+                          ? ""
+                          : "agoi: " + tran.storename
+                        : ""}
+                      <br />
+                    </div>
+                  ))} */}
           </ul>
         </div>
       </div>
@@ -96,4 +91,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default RiderProfile;
