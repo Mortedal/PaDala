@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import Services from './pages/Services';
 import About from './pages/About';  
 import Dashboard from './pages/Dashboard';  
+import Chat from './pages/Chat';  
 import AdminDashboard from './pages/AdminDash';  
 import ProfileDash from './pages/ProfileDash';
 import TransactionsDash from './pages/TransactionsDash';
@@ -34,6 +35,7 @@ function App() {
       <Route path='/' exact element={<Home/>}/>
       <Route path='/services' exact element={<Services/>}/>
       <Route path='/about' exact element={<About/>}/>
+      <Route path='/chat' exact element={<Chat/>}/>
       <Route path='/signup' exact element={<Signup/>}/>
       <Route path='/login' exact element={<Login/>}/>
       <Route path='/popupform' exact element={<PopupForm/>}/>

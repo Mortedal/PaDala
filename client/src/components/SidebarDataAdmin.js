@@ -19,17 +19,12 @@ export const SidebarDataAdmin = [
 
     },
     {
-        title:"All Transactions",
+        title:"Edit User Roles",
         link: "/address",
 
     },
     {
-        title:"All Transactions",
-        link: "/address",
-
-    },
-    {
-        title:"All Transactions",
+        title:"Delete Users",
         link: "/address",
 
     },
