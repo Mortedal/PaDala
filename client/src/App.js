@@ -15,7 +15,6 @@ import AllTransactions from "./pages/AllTransactions";
 import CustomerProfile from "./pages/CustomerProfile";
 import RiderProfile from "./pages/RiderProfile";
 import PopupForm from "./components/PopupForm";
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
