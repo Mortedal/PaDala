@@ -55,9 +55,9 @@ function App() {
         <Footer />
       </Router>
 
-    {/*-------------------------------for design-------------------------------------------------*/}
+      {/*-------------------------------for design-------------------------------------------------*/}
 
-    {/* <Router>
+      {/* <Router>
     <Navbar />
     <Routes>
       <Route path='/dashboard' exact element={<Dashboard/>}/>
@@ -74,7 +74,8 @@ function App() {
       </Routes>
     <Footer />
     </Router> */}
-   </div>
+    </div>
+  );
 }
 
 export default App;
