@@ -3,6 +3,7 @@ import Authen from "./components/Authen";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Services from "./pages/Services";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/profile" exact element={<ProfileDash />} />
             <Route path="/transaction" exact element={<TransactionsDash />} />
             <Route path="/editprofile" exact element={<EditProfile />} />
+            <Route path="/chat" exact element={<Chat />} />
             <Route
               path="/alltransactions"
               exact

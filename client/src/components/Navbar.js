@@ -66,7 +66,7 @@ const logout = () => {
               <Link to ="/"> Home </Link>
               <Link to ="/services"> Services </Link>
               <Link to ="/about"> About  </Link>
-              <Link to ="/chat"> Chat </Link>
+              <Link to ="https://www.messenger.com/"> Chat </Link>
               {
                JSON.parse(auth).role === "" ? <Link to ="/profile"> Dashboard  </Link>: ''
               }  

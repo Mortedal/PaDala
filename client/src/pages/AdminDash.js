@@ -1,7 +1,7 @@
-import React from 'react'
+// import React from 'react'
 
-function AdminDash() {
+// function AdminDash() {
   
-}
+// }
 
-export default AdminDash
+// export default AdminDash
