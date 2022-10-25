@@ -12,7 +12,6 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
-    "react-chat-engine": "^1.11.23",
     "react-dom": "^18.2.0",
     "react-file-base64": "^1.0.3",
     "react-jwt": "^1.1.6",
@@ -27,10 +26,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startserver": "node server/index.js",
-    "server": "nodemon server/index.js",
+    "startserver": "node index.js",
+    "server": "nodemon index.js",
     "client": "nodemon client/index.js",
-    "dev": "concurrently \"cd server && npm start server\" \"npm start client\""
+    "dev": "concurrently \"cd server && npm start\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
