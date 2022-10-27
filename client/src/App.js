@@ -16,6 +16,13 @@ import AllTransactions from "./pages/AllTransactions";
 import CustomerProfile from "./pages/CustomerProfile";
 import RiderProfile from "./pages/RiderProfile";
 import PopupForm from "./components/PopupForm";
+import Pending from "./pages/Pending";
+import Completed from "./pages/Completed";
+import Canceled from "./pages/Canceled";
+import OngoingOrder from "./pages/Ongoingorder";
+import PendingAdmin from "./pages/Pendingadmin";
+import CompletedAdmin from "./pages/Completedadmin";
+import OngoingOrderAdmin from "./pages/Ongoingorderadmin";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -39,7 +46,18 @@ function App() {
               exact
               element={<AllTransactions />}
             />
+            <Route path="/pending" exact element={<Pending />} />
+            <Route path="/completed" exact element={<Completed />} />
+            <Route path="/canceled" exact element={<Canceled />} />
+            <Route path="/pendingadmin" exact element={<PendingAdmin />} />
+            <Route path="/completedadmin" exact element={<CompletedAdmin />} />
             <Route path="/riderprofile" exact element={<RiderProfile />} />
+            <Route path="/ongoingorder" exact element={<OngoingOrder />} />
+            <Route
+              path="/ongoingorderadmin"
+              exact
+              element={<OngoingOrderAdmin />}
+            />
             <Route
               path="/customerprofile"
               exact

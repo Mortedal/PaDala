@@ -2,25 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
-import SidebarRider from "../components/SidebarRider";
+import SidebarRider from "../components/SidebarRider.js";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+// import CardActions from "@mui/material/CardActions";
+// import Button from "@mui/material/Button";
 
-function Dashboard() {
+function Completed() {
   const auth = localStorage.getItem("user");
 
   const [trans, setTrans] = useState([]);
 
-  const email = JSON.parse(auth).email;
+  const ostat = "completed";
 
   useEffect(() => {
-    console.log("This is email when i ran", email);
+    console.log("This is email when i ran", ostat);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getTransSpec", {
+      const data = await axios.get("http://localhost:5000/api/getRider", {
         params: {
-          email,
+          ostat,
         },
         //email
       });
@@ -28,8 +30,7 @@ function Dashboard() {
       setTrans(data.data);
     };
     fetchdata().catch(console.error);
-  }, [email]);
-
+  }, [ostat]);
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
@@ -37,7 +38,7 @@ function Dashboard() {
       {JSON.parse(auth).role === "" ? <Sidebar /> : ""}
 
       <div className="dashbox">
-        <h1>Your Transactions</h1>
+        <h1>Completed Orders</h1>
         <div>
           <ul>
             {trans.map((tran) => (
@@ -45,32 +46,26 @@ function Dashboard() {
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                      {tran.email === email ? tran.typeoferrand : ""}
+                      {tran.ostat === ostat ? tran.typeoferrand : ""}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {tran.email === email
+                      {tran.ostat === ostat
                         ? tran.storename === ""
                           ? ""
                           : "Store: " + tran.storename
                         : ""}
                       <br />
-                      {tran.email === email
-                        ? "Address delivered to: " +
-                          tran.useraddress +
-                          " -- " +
-                          tran.deliverylocation
+                      {tran.ostat === ostat
+                        ? "Delivered to: " + tran.useraddress
                         : ""}
                       <br />
-                      {tran.email === email ? "Email: " + tran.email : ""}
+                      {tran.ostat === ostat ? "Email: " + tran.email : ""}
                       <br />
-                      {tran.email === email
+                      {tran.ostat === ostat
                         ? "Time of order: " + tran.time
                         : ""}
                       <br />
-                      {tran.email === email
-                        ? "Order Status: " + tran.ostat
-                        : ""}
-                      <br />
+                      {tran.ostat === ostat ? "Status: " + tran.ostat : ""}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -101,4 +96,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Completed;

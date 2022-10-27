@@ -7,6 +7,8 @@ import SidebarRider from "../components/SidebarRider";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
 
 function CustomerProfile() {
   const auth = localStorage.getItem("user");
@@ -67,6 +69,10 @@ function CustomerProfile() {
                       <br />
                     </Typography>
                   </CardContent>
+                  <CardActions>
+                    <Button size="small">Edit</Button>
+                    <Button size="small">Delete</Button>
+                  </CardActions>
                 </Card>
                 <br />
               </div>

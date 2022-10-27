@@ -5,6 +5,8 @@ import User from "./models/usermodel.js";
 import Order from "./models/errandorder.js";
 import getOrder from "./models/getorder.js";
 import getUsers from "./models/getusers.js";
+import postComp from "./models/completeorder.js";
+import getPending from "./models/getpending.js";
 import jwt from "jsonwebtoken";
 const app = express();
 
@@ -46,7 +48,7 @@ app.post("/api/register", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       role: req.body.role,
-      acccreated: req.body.acccreated
+      acccreated: req.body.acccreated,
     });
     res.json({ status: "ok" });
   } catch (err) {
@@ -103,6 +105,7 @@ app.post("/api/order", async (req, res) => {
       cellnum: req.body.cellnum,
       request: req.body.request,
       time: req.body.time,
+      ostat: req.body.ostat,
     });
     res.json({ status: "ok" });
   } catch (err) {
@@ -166,6 +169,49 @@ app.get("/api/getTransSpec", async (req, res) => {
   }
 });
 
+app.get("/api/getPending", async (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  try {
+    const agoi = await getOrder.find({
+      ostat: req.query.ostat,
+    });
+    res.send(agoi);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+app.get("/api/getRider", async (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  try {
+    const agoi = await getOrder.find({
+      ostat: req.query.ostat,
+    });
+    res.send(agoi);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
+app.get("/api/getRiderSpec", async (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  try {
+    const agoi = await getOrder.find({
+      rider: req.query.rider,
+      ostat: req.query.ostat,
+    });
+    res.send(agoi);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+});
+
 app.get("/api/getTrans", async (req, res) => {
   console.log(req.body);
   try {
@@ -187,5 +233,52 @@ app.get("/api/getUsers", async (req, res) => {
     res.send(getCust);
   } catch (error) {
     return res.status(400).json({ message: error });
+  }
+});
+
+//------------------------------
+
+app.post("/api/comporder", async (req, res) => {
+  console.log(req.body);
+  try {
+    await postComp.create({
+      email: req.body.email,
+      typeoferrand: req.body.typeoferrand,
+      storename: req.body.storename,
+      storeaddress: req.body.storeaddress,
+      useraddress: req.body.useraddress,
+      deliverylocation: req.body.deliverylocation,
+      pickuptime: req.body.pickuptime,
+      cellnum: req.body.cellnum,
+      request: req.body.request,
+      time: req.body.time,
+      ostat: req.body.ostat,
+    });
+    res.json({ status: "ok" });
+  } catch (err) {
+    res.json({ status: "error ", error: "errrrr" });
+  }
+});
+
+//------------------------------
+
+app.post("/api/updateorder", async (req, res) => {
+  console.log(req.body);
+  try {
+    await getOrder.findOneAndUpdate(
+      {
+        _id: req.body._id,
+      },
+      {
+        $set: {
+          ostat: req.body.accept,
+          rider: req.body.email,
+        },
+      }
+    );
+
+    return res.json({ status: "ok" });
+  } catch (err) {
+    res.json({ status: "error ", error: "invalid token" });
   }
 });

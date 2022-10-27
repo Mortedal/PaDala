@@ -1,24 +1,22 @@
 import mongoose from "mongoose";
 
-const Order = new mongoose.Schema(
+const getCompleted = new mongoose.Schema(
   {
-    email: { type: String, required: true },
+    email: { type: String },
     typeoferrand: { type: String },
     storename: { type: String },
     storeaddress: { type: String },
-    deliverylocation: { type: String },
     useraddress: { type: String, required: true },
     pickuptime: { type: String },
     request: { type: String },
     cellnum: { type: String, required: true },
-    time: { type: String, required: true },
-    ostat: { type: String },
+    ostat: { trype: String },
   },
   {
     collection: "order-data",
   }
 );
 
-const modelOrder = mongoose.model("OrderData", Order);
+const modelgetCompleted = mongoose.model("CompletedgetData", getCompleted);
 
-export default modelOrder;
+export default modelgetCompleted;

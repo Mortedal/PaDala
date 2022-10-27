@@ -47,9 +47,11 @@ function AllTransactions() {
                       <br />
                       {"Store: " + tran.storename}
                       <br />
-                      {"Delivered to: " + tran.useraddress}
                       <br />
-                      {"Email: " + tran.storeaddress}
+                      {"Address delivered to: " +
+                        tran.useraddress +
+                        " -> " +
+                        tran.deliverylocation}
                       <br />
                       {"Time of order: " + tran.time}
                       <br />

@@ -5,6 +5,8 @@ import TextField from "@mui/material/TextField";
 
 const time = new Date().toLocaleDateString() +" -- " + new Date().toLocaleTimeString();
 
+const ostat = "pending"
+
 const PopupForm = ({ open, onClose }) => {
   const [deliverylocation, setDeliverylocation] = useState("");
   const [useraddress, setUseraddress] = useState("");
@@ -38,6 +40,7 @@ const PopupForm = ({ open, onClose }) => {
         cellnum,
         pickuptime,
         time,
+        ostat
       }),
     });
 

@@ -1,19 +1,23 @@
 import mongoose from "mongoose";
 
-const getOrder = new mongoose.Schema({
+const getOrder = new mongoose.Schema(
+  {
     email: { type: String },
-    typeoferrand: { type: String},
-    storename: { type: String},
-    storeaddress: { type: String},
+    typeoferrand: { type: String },
+    storename: { type: String },
+    storeaddress: { type: String },
     useraddress: { type: String, required: true },
-    pickuptime: { type: String},
-    request: { type: String},
+    pickuptime: { type: String },
+    request: { type: String },
     cellnum: { type: String, required: true },
-},
-{
-    collection: 'order-data'
-})
+    ostat: { type: String },
+    rider: { type: String },
+  },
+  {
+    collection: "order-data",
+  }
+);
 
-const modelgetOrder = mongoose.model('OrdergetData', getOrder)
+const modelgetOrder = mongoose.model("OrdergetData", getOrder);
 
-export default modelgetOrder
+export default modelgetOrder;

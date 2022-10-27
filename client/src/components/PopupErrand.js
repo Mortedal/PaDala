@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-const time = new Date().toLocaleDateString() +" -- " + new Date().toLocaleTimeString();
+const time =
+  new Date().toLocaleDateString() + " -- " + new Date().toLocaleTimeString();
 
+const ostat = "pending";
 
 const PopupForm = ({ open, onClose }) => {
   // const navigate = useNavigate();
@@ -19,7 +21,6 @@ const PopupForm = ({ open, onClose }) => {
 
   const address = JSON.parse(token).defaultaddress;
   const cell = JSON.parse(token).cellnum;
-
 
   async function orderErrand(event) {
     event.preventDefault();
@@ -36,6 +37,7 @@ const PopupForm = ({ open, onClose }) => {
         cellnum,
         request,
         time,
+        ostat,
       }),
     });
 
