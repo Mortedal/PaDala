@@ -46,6 +46,7 @@ app.post("/api/register", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       role: req.body.role,
+      acccreated: req.body.acccreated
     });
     res.json({ status: "ok" });
   } catch (err) {
@@ -101,6 +102,7 @@ app.post("/api/order", async (req, res) => {
       pickuptime: req.body.pickuptime,
       cellnum: req.body.cellnum,
       request: req.body.request,
+      time: req.body.time,
     });
     res.json({ status: "ok" });
   } catch (err) {

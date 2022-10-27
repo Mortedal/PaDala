@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
+const time = new Date().toLocaleDateString() +" -- " + new Date().toLocaleTimeString();
+
 const PopupForm = ({ open, onClose }) => {
   const [useraddress, setUseraddress] = useState("");
   const [storeaddress, setStoreaddress] = useState("");
@@ -34,6 +36,7 @@ const PopupForm = ({ open, onClose }) => {
         useraddress,
         cellnum,
         pickuptime,
+        time,
       }),
     });
 

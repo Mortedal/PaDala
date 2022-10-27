@@ -12,6 +12,8 @@ import '../styles/Signup.css'
 //   console.log(fname, lname, email, password);
 // };
 
+const acccreated = new Date().toLocaleDateString() +" -- " + new Date().toLocaleTimeString();
+
 
 function Signup() {
   const navigate = useNavigate();
@@ -44,6 +46,7 @@ function Signup() {
                 password,
                 cpassword,
                 role,
+                acccreated,
             }),
         })
 

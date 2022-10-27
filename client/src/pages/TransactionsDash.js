@@ -63,7 +63,7 @@ function Dashboard() {
                         : ""}
                       <br />
                       {tran.email === email
-                        ? "Time of order: " + tran.time
+                        ? "Time of order: " + tran.acccreated
                         : ""}
                       <br />
                     </Typography>

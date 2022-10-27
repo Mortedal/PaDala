@@ -61,6 +61,10 @@ function CustomerProfile() {
                         ? "Default Address: " + custs.defaultaddress
                         : ""}
                       <br />
+                      {custs.role === role
+                        ? "Account created at: " + custs.acccreated
+                        : ""}
+                      <br />
                     </Typography>
                   </CardContent>
                 </Card>

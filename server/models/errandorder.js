@@ -9,6 +9,7 @@ const Order = new mongoose.Schema({
     pickuptime: { type: String},
     request: { type: String},
     cellnum: { type: String, required: true },
+    time: {type: String, required: true }
 },
 {
     collection: 'order-data'
