@@ -94,7 +94,7 @@
 .hiddenlinks {
     display: none;
   }
-
+/* 
   .SidebarExtra #open .hiddenlinks {
     display: inherit;
     margin-left: 30px;
@@ -102,9 +102,9 @@
   
   .SidebarExtra #close .hiddenlinks {
     display: none;
-  }
+  } */
 
-@media only screen and (max-width: 1300px) {
+/* @media only screen and (max-width: 800px) {
     .Dashboard {
         padding-top:5%;
         padding-left: 0%;
@@ -146,4 +146,4 @@
         width: 100%;
       }
 
-  }
+  } */

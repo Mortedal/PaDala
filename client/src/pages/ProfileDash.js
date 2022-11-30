@@ -52,11 +52,11 @@ function Dashboard() {
           <ReorderIcon />
         </button>
       </div>
-      <div className="hiddenlinks" id={openLinks ? "open" : "close"}>
-        {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
-        {JSON.parse(auth).role === "rider" ? <SidebarRider /> : ""}
-        {JSON.parse(auth).role === "" ? <Sidebar /> : ""}
-      </div>
+      {/* <div className="hiddenlinks" id={openLinks ? "open" : "close"}> */}
+      {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
+      {JSON.parse(auth).role === "rider" ? <SidebarRider /> : ""}
+      {JSON.parse(auth).role === "" ? <Sidebar /> : ""}
+      {/* </div> */}
 
       <div className="dashbox">
         <h1>Your Profile</h1>

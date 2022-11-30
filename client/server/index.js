@@ -12,8 +12,10 @@ const app = express();
 
 const router = express.Router();
 
+const path = "require";
+
 app.use(cors());
-app.use(express.json());
+app.use(express.static(path.join(__dirname + "/public")));
 
 const CONNECTION_URL =
   "mongodb+srv://PaDala:padalapassword123@cluster0.9itxfxl.mongodb.net/?retryWrites=true&w=majority";
