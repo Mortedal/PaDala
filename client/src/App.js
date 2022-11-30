@@ -24,6 +24,7 @@ import PendingAdmin from "./pages/Pendingadmin";
 import CompletedAdmin from "./pages/Completedadmin";
 import OngoingOrderAdmin from "./pages/Ongoingorderadmin";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Deactprofile from "./pages/Deactprofile";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
               exact
               element={<CustomerProfile />}
             />
+            <Route path="/deactprofile" exact element={<Deactprofile />} />
           </Route>
           <Route path="/" exact element={<Home />} />
           <Route path="/services" exact element={<Services />} />

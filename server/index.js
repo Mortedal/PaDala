@@ -89,6 +89,20 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+//---------------------------------------------------
+
+app.post("/api/deleteuser", async (req, res) => {
+  console.log(req.body);
+  try {
+    await User.deleteOne({
+      email: req.body.email,
+    });
+    res.json({ status: "ok" });
+  } catch (err) {
+    res.json({ status: "error ", error: "Could not find Email" });
+  }
+});
+
 //----------------------------------------------------------------------------------------------------
 
 app.post("/api/order", async (req, res) => {
@@ -138,6 +152,26 @@ app.post("/api/updateuser", async (req, res) => {
   }
 });
 
+app.post("/api/updaterole", async (req, res) => {
+  console.log(req.body);
+  try {
+    await User.findOneAndUpdate(
+      {
+        email: req.body.email,
+      },
+      {
+        $set: {
+          role: req.body.crole,
+        },
+      }
+    );
+
+    return res.json({ status: "ok" });
+  } catch (err) {
+    res.json({ status: "error ", error: "invalid token" });
+  }
+});
+
 //----------------------------------------------------------------------------------------------------
 
 app.post("/api/getUserinfo", async (req, res) => {
@@ -154,7 +188,7 @@ app.post("/api/getUserinfo", async (req, res) => {
 });
 
 //----------------------------------------------------------------------------------------------------
-//---
+
 app.get("/api/getTransSpec", async (req, res) => {
   console.log(req.body);
   console.log(req.params);
@@ -273,6 +307,7 @@ app.post("/api/updateorder", async (req, res) => {
         $set: {
           ostat: req.body.accept,
           rider: req.body.email,
+          fee: req.body.fee,
         },
       }
     );

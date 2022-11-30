@@ -11,6 +11,7 @@ const getOrder = new mongoose.Schema(
     request: { type: String },
     cellnum: { type: String, required: true },
     ostat: { type: String },
+    fee: { type: String },
     rider: { type: String },
   },
   {

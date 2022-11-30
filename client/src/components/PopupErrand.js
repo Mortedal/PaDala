@@ -15,7 +15,10 @@ const PopupForm = ({ open, onClose }) => {
   const [request, setRequest] = useState("");
 
   const token = localStorage.getItem("user");
+
   const email = JSON.parse(token).email;
+
+  const role = JSON.parse(token).role;
 
   const typeoferrand = "Custom";
 
@@ -45,6 +48,7 @@ const PopupForm = ({ open, onClose }) => {
 
     if (data.status === "ok") {
       alert("order created");
+      onClose();
       //  navigate('/dashboard')
     }
 
@@ -57,13 +61,14 @@ const PopupForm = ({ open, onClose }) => {
     <div className="modalContainer">
       <div className="modalRight">
         <h3>Custom Errand</h3>
+        <p>Minimum fee ₱40</p>
         <form onSubmit={orderErrand}>
           <TextField
             value={useraddress}
             onChange={(e) => setUseraddress(e.target.value)}
             placeholder="Address"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <input
@@ -88,7 +93,7 @@ const PopupForm = ({ open, onClose }) => {
             onChange={(e) => setCellnum(e.target.value)}
             placeholder="Cellphone Number"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <input
@@ -118,9 +123,25 @@ const PopupForm = ({ open, onClose }) => {
           <br />
           <br />
           <div className="btnContainer">
-            <Button variant="contained" type="submit">
-              <span className="bold">Place Order</span>
-            </Button>
+            {role === "" ? (
+              <Button variant="contained" type="submit">
+                <span className="bold">Place Order</span>
+              </Button>
+            ) : role === "admin" ? (
+              <Button variant="contained" type="submit">
+                <span className="bold">Place Order</span>
+              </Button>
+            ) : role === "deactivated" ? (
+              <Button variant="contained">
+                <span className="bold">Deactivated</span>
+              </Button>
+            ) : role === "rider" ? (
+              <Button variant="contained">
+                <span className="bold">Rider cant order</span>
+              </Button>
+            ) : (
+              ""
+            )}
             <Button onClick={onClose}>
               <span className="bold">Cancel Order</span>
             </Button>

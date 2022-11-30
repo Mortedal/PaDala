@@ -28,19 +28,31 @@ function Navbar() {
         <div className="leftSide" id={openLinks ? "open" : "close"}>
           <img src={Logo} alt="logo" />
           <div className="hiddenLinks">
-            <Link to="/"> Home </Link>
-            <Link to="/services"> Services </Link>
-            <Link to="/about"> About </Link>
-            <Link to="/dashboard"> Dashboard </Link>
-            <Link to="/chat"> Chat </Link>
+            <ul></ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/services"> Services </Link>
+            </li>
+            <li>
+              <Link to="/about"> About </Link>
+            </li>
+            <li>
+              <Link to="/profile"> Dashboard </Link>
+            </li>
 
             {auth ? (
-              <Link onClick={logout} to="/">
-                {" "}
-                Logout{" "}
-              </Link>
+              <li>
+                <Link onClick={logout} to="/">
+                  {" "}
+                  Logout{" "}
+                </Link>
+              </li>
             ) : (
-              <Link to="/login"> Login </Link>
+              <li>
+                <Link to="/login"> Login </Link>
+              </li>
             )}
           </div>
         </div>
@@ -48,17 +60,27 @@ function Navbar() {
         <div className="leftSide" id={openLinks ? "open" : "close"}>
           <img src={Logo} alt="logo" />
           <div className="hiddenLinks">
-            <Link to="/"> Home </Link>
-            <Link to="/services"> Services </Link>
-            <Link to="/about"> About </Link>
+            <li>
+              <Link to="/"> Home </Link>
+            </li>
+            <li>
+              <Link to="/services"> Services </Link>
+            </li>
+            <li>
+              <Link to="/about"> About </Link>
+            </li>
 
             {auth ? (
-              <Link onClick={logout} to="/">
-                {" "}
-                Logout{" "}
-              </Link>
+              <li>
+                <Link onClick={logout} to="/">
+                  {" "}
+                  Logout{" "}
+                </Link>
+              </li>
             ) : (
-              <Link to="/login"> Login </Link>
+              <li>
+                <Link to="/login"> Login </Link>
+              </li>
             )}
           </div>
         </div>
@@ -66,32 +88,47 @@ function Navbar() {
 
       {auth ? (
         <div className="rightSide">
-          <Link to="/"> Home </Link>
-          <Link to="/services"> Services </Link>
-          <Link to="/about"> About </Link>
-          <Link to="https://www.messenger.com/"> Chat </Link>
+          <li>
+            <Link to="/"> Home </Link>
+          </li>
+          <li>
+            <Link to="/services"> Services </Link>
+          </li>
+          <li>
+            <Link to="/about"> About </Link>
+          </li>
           {JSON.parse(auth).role === "" ? (
-            <Link to="/profile"> Dashboard </Link>
+            <li>
+              <Link to="/profile"> Dashboard </Link>
+            </li>
           ) : (
             ""
           )}
           {JSON.parse(auth).role === "admin" ? (
-            <Link to="/profile"> Admin Dashboard </Link>
+            <li>
+              <Link to="/profile"> A.Dashboard </Link>
+            </li>
           ) : (
             ""
           )}
           {JSON.parse(auth).role === "rider" ? (
-            <Link to="/profile"> Rider Dashboard </Link>
+            <li>
+              <Link to="/profile"> R.Dashboard </Link>
+            </li>
           ) : (
             ""
           )}
           {auth ? (
-            <Link onClick={logout} to="/">
-              {" "}
-              Logout{" "}
-            </Link>
+            <li>
+              <Link onClick={logout} to="/">
+                {" "}
+                Logout{" "}
+              </Link>
+            </li>
           ) : (
-            <Link to="/login"> Login </Link>
+            <li>
+              <Link to="/login"> Login </Link>
+            </li>
           )}
 
           <button onClick={toggleNavbar}>
@@ -100,16 +137,26 @@ function Navbar() {
         </div>
       ) : (
         <div className="rightSide">
-          <Link to="/"> Home </Link>
-          <Link to="/services"> Services </Link>
-          <Link to="/about"> About </Link>
+          <li>
+            <Link to="/"> Home </Link>
+          </li>
+          <li>
+            <Link to="/services"> Services </Link>
+          </li>
+          <li>
+            <Link to="/about"> About </Link>
+          </li>
           {auth ? (
-            <Link onClick={logout} to="/">
-              {" "}
-              Logout{" "}
-            </Link>
+            <li>
+              <Link onClick={logout} to="/">
+                {" "}
+                Logout{" "}
+              </Link>
+            </li>
           ) : (
-            <Link to="/login"> Login </Link>
+            <li>
+              <Link to="/login"> Login </Link>
+            </li>
           )}
 
           <button onClick={toggleNavbar}>

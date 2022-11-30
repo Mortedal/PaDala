@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
@@ -19,7 +20,11 @@ function Pending() {
 
   const [accept, setAccept] = useState([]);
 
+  const [fee, setFee] = useState([]);
+
   const [_id, set_id] = useState([]);
+
+  const navigate = useNavigate();
 
   const email = JSON.parse(auth).email;
 
@@ -38,6 +43,8 @@ function Pending() {
     fetchdata().catch(console.error);
   }, [ostat]);
 
+  const orders = trans.slice(0).reverse();
+
   async function updateorder(event) {
     event.preventDefault();
 
@@ -47,12 +54,14 @@ function Pending() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        fee,
         accept,
         _id,
         email,
       }),
     });
     console.log(response);
+    // navigate("/completed");
   }
 
   return (
@@ -65,7 +74,7 @@ function Pending() {
         <h1>Ongoing Orders</h1>
         <div>
           <ul>
-            {trans.map((tran) => (
+            {orders.map((tran) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -74,6 +83,7 @@ function Pending() {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {tran.rider === ostat ? "Order Id: " + tran._id : ""}
+                      <br />
                       {tran.ostat === ostat
                         ? tran.storename === ""
                           ? ""
@@ -96,26 +106,56 @@ function Pending() {
                       {tran.ostat === ostat ? "Status: " + tran.ostat : ""}
                       <CardActions>
                         <form onSubmit={updateorder}>
+                          <br />
+                          Set Delivery Fee
                           <Button
-                            type="Submit"
                             size="small"
+                            type="Submit"
                             onClick={() =>
-                              set_id(tran._id) || setAccept("completed")
+                              set_id(tran._id) ||
+                              setAccept("completed") ||
+                              setFee("40")
                             }
                           >
-                            Order Done
+                            40
+                          </Button>
+                          <Button
+                            size="small"
+                            type="Submit"
+                            onClick={() =>
+                              set_id(tran._id) ||
+                              setAccept("completed") ||
+                              setFee("60")
+                            }
+                          >
+                            60
+                          </Button>
+                          <Button
+                            size="small"
+                            type="Submit"
+                            onClick={() =>
+                              set_id(tran._id) ||
+                              setAccept("completed") ||
+                              setFee("90")
+                            }
+                          >
+                            90
                           </Button>
                         </form>
                         <form onSubmit={updateorder}>
+                          <br />
                           <Button
                             size="small"
                             type="Submit"
                             onClick={() =>
-                              set_id(tran._id) || setAccept("canceled")
+                              set_id(tran._id) ||
+                              setAccept("canceled") ||
+                              setFee("0")
                             }
                           >
-                            Canceled
+                            Cancel the order
                           </Button>
+                          <br />
                         </form>
                       </CardActions>
                     </Typography>

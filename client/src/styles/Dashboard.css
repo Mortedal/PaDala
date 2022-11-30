@@ -18,7 +18,6 @@
     overflow-y:scroll;
     overflow-x:hidden;
     box-shadow: inset 0px -20px 20px -12px rgb(164, 164, 164);
-    z-index: 10000;
 }
 .divshadow{
 
@@ -31,13 +30,13 @@
 
 .Sidebar {
     height: 100%;
-    width: 250px;
+    width: 350px;
     background-color:#2F4050;
     border-radius: 10px;
 }
 .SidebarExtra {
     height: 100%;
-    width: 250px;
+    width: 350px;
     background-color:#6f7d8b;
     border-radius: 10px;
 }
@@ -92,4 +91,59 @@
     overflow:scroll;
     overflow-x:hidden;
 }
+.hiddenlinks {
+    display: none;
+  }
 
+  .SidebarExtra #open .hiddenlinks {
+    display: inherit;
+    margin-left: 30px;
+  }
+  
+  .SidebarExtra #close .hiddenlinks {
+    display: none;
+  }
+
+@media only screen and (max-width: 1300px) {
+    .Dashboard {
+        padding-top:5%;
+        padding-left: 0%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 0%;
+        padding-right: 0%;
+        padding-bottom: 10%;
+        width: 100%;
+        height: 120vh;
+    }
+    .Sidebar {
+        height: 100%;
+        width: 100%;
+        display: absolute;
+        background-color:#2F4050;
+        border-radius: 10px;
+    }
+    .SidebarExtra {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        background-color:#6f7d8b;
+        border-radius: 10px;
+    }
+    .dashbox{
+        background-color: #eeeeee;
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        overflow-y:scroll;
+        overflow-x:hidden;
+        box-shadow: inset 0px -20px 20px -12px rgb(164, 164, 164);
+    }
+    .hiddenlinks{
+        display: none;
+        width: 100%;
+      }
+
+  }

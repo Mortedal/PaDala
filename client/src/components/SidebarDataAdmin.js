@@ -8,7 +8,7 @@ export const SidebarDataAdmin = [
     link: "/transaction",
   },
   {
-    title: "Pending Transactions",
+    title: "Pending Orders",
     link: "/pendingadmin",
   },
   {
@@ -16,16 +16,20 @@ export const SidebarDataAdmin = [
     link: "/ongoingorderadmin",
   },
   {
-    title: "Completed Transactions",
+    title: "Completed Orders",
     link: "/completedadmin",
   },
   {
-    title: "Canceled Transactions",
+    title: "Canceled Orders",
     link: "/canceled",
   },
   {
     title: "Customer Profiles",
     link: "/customerprofile",
+  },
+  {
+    title: "Deactivated Profiles",
+    link: "/deactprofile",
   },
   {
     title: "Rider Profiles",

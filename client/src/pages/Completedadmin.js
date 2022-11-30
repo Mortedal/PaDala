@@ -31,6 +31,7 @@ function Completed() {
     };
     fetchdata().catch(console.error);
   }, [ostat]);
+  const orders = trans.slice(0).reverse();
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
@@ -41,7 +42,7 @@ function Completed() {
         <h1>Completed Orders</h1>
         <div>
           <ul>
-            {trans.map((tran) => (
+            {orders.map((tran) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -66,6 +67,8 @@ function Completed() {
                         : ""}
                       <br />
                       {tran.ostat === ostat ? "Status: " + tran.ostat : ""}
+                      <br />
+                      {tran.ostat === ostat ? "Fee: " + tran.fee : ""}
                     </Typography>
                   </CardContent>
                 </Card>

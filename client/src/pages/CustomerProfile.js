@@ -9,13 +9,20 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+import { Navigate } from "react-router-dom";
 
 function CustomerProfile() {
   const auth = localStorage.getItem("user");
 
   const [cust, setCust] = useState([]);
 
+  const [email, setEmail] = useState();
+
+  const [crole, setCrole] = useState();
+
   const role = "";
+
+  const deact = "deactivated";
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -31,6 +38,46 @@ function CustomerProfile() {
     fetchdata().catch(console.error);
   }, [role]);
 
+  async function deleteUser(event) {
+    event.preventDefault();
+
+    const response = await fetch("http://localhost:5000/api/deleteuser", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+    const data = await response.json();
+    if (data.status === "ok") {
+      alert("User deleted");
+    }
+    window.location.reload(false);
+    console.log(data);
+  }
+
+  async function updaterole(event) {
+    event.preventDefault();
+
+    const response = await fetch("http://localhost:5000/api/updaterole", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        crole,
+      }),
+    });
+    const data = await response.json();
+    if (data.status === "ok") {
+      alert("role changed");
+    }
+    window.location.reload(false);
+    console.log(data);
+  }
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
@@ -67,12 +114,30 @@ function CustomerProfile() {
                         ? "Account created at: " + custs.acccreated
                         : ""}
                       <br />
+                      <CardActions>
+                        <form onSubmit={updaterole}>
+                          <Button
+                            size="small"
+                            onClick={() =>
+                              setEmail(custs.email) || setCrole("deactivated")
+                            }
+                            type="submit"
+                          >
+                            Deactivate
+                          </Button>
+                        </form>
+                        <form onSubmit={deleteUser}>
+                          <Button
+                            size="small"
+                            onClick={() => setEmail(custs.email)}
+                            type="submit"
+                          >
+                            Delete
+                          </Button>
+                        </form>
+                      </CardActions>
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">Edit</Button>
-                    <Button size="small">Delete</Button>
-                  </CardActions>
                 </Card>
                 <br />
               </div>

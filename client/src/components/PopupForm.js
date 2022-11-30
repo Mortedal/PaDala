@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-const time = new Date().toLocaleDateString() +" -- " + new Date().toLocaleTimeString();
+const time =
+  new Date().toLocaleDateString() + " -- " + new Date().toLocaleTimeString();
 
-const ostat = "pending"
-
+const ostat = "pending";
 
 const PopupForm = ({ open, onClose }) => {
   const [useraddress, setUseraddress] = useState("");
@@ -17,6 +17,8 @@ const PopupForm = ({ open, onClose }) => {
   const token = localStorage.getItem("user");
 
   const email = JSON.parse(token).email;
+
+  const role = JSON.parse(token).role;
 
   const typeoferrand = "Food/Grocery";
 
@@ -48,6 +50,7 @@ const PopupForm = ({ open, onClose }) => {
 
     if (data.status === "ok") {
       alert("order created");
+      onClose();
       //  navigate('/dashboard')
     }
 
@@ -60,13 +63,14 @@ const PopupForm = ({ open, onClose }) => {
     <div className="modalContainer">
       <div className="modalRight">
         <h3>Food/Grocery</h3>
+        <p>Minimum fee ₱40</p>
         <form onSubmit={orderErrand}>
           <TextField
             value={storename}
             onChange={(e) => setStorename(e.target.value)}
             placeholder="Name of Store"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <br />
@@ -75,7 +79,7 @@ const PopupForm = ({ open, onClose }) => {
             onChange={(e) => setStoreaddress(e.target.value)}
             placeholder="Store Address"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <br />
@@ -84,7 +88,7 @@ const PopupForm = ({ open, onClose }) => {
             onChange={(e) => setUseraddress(e.target.value)}
             placeholder="Address to Deliver to"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <input
@@ -109,7 +113,7 @@ const PopupForm = ({ open, onClose }) => {
             onChange={(e) => setCellnum(e.target.value)}
             placeholder="Cellphone Number"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <input
@@ -134,14 +138,30 @@ const PopupForm = ({ open, onClose }) => {
             onChange={(e) => setPickuptime(e.target.value)}
             placeholder="Time of Delivery"
             type="text"
-            style={{ width: 300 }}
+            style={{ width: 500 }}
           />
           <br />
           <br />
           <div className="btnContainer">
-            <Button variant="contained" type="submit">
-              <span className="bold">Place Order</span>
-            </Button>
+            {role === "" ? (
+              <Button variant="contained" type="submit">
+                <span className="bold">Place Order</span>
+              </Button>
+            ) : role === "admin" ? (
+              <Button variant="contained" type="submit">
+                <span className="bold">Place Order</span>
+              </Button>
+            ) : role === "deactivated" ? (
+              <Button variant="contained">
+                <span className="bold">Deactivated</span>
+              </Button>
+            ) : role === "rider" ? (
+              <Button variant="contained">
+                <span className="bold">Rider cant order</span>
+              </Button>
+            ) : (
+              ""
+            )}
             <Button onClick={onClose}>
               <span className="bold">Cancel Order</span>
             </Button>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
@@ -14,12 +15,16 @@ function Pending() {
   const auth = localStorage.getItem("user");
 
   const [trans, setTrans] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostPerPage] = useState(1);
 
   const ostat = "pending";
 
   const accept = "accept";
 
   const [_id, set_id] = useState([]);
+
+  const navigate = useNavigate();
 
   const email = JSON.parse(auth).email;
 
@@ -37,7 +42,7 @@ function Pending() {
     };
     fetchdata().catch(console.error);
   }, [ostat]);
-
+  const orders = trans.slice(0).reverse();
   async function updateorder(event) {
     event.preventDefault();
 
@@ -53,6 +58,7 @@ function Pending() {
       }),
     });
     console.log(response);
+    navigate("/ongoingorder");
   }
 
   return (
@@ -65,7 +71,7 @@ function Pending() {
         <h1>Pending Orders</h1>
         <div>
           <ul>
-            {trans.map((tran) => (
+            {orders.map((tran) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -74,6 +80,7 @@ function Pending() {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       {tran.ostat === ostat ? "Order Id: " + tran._id : ""}
+                      <br />
                       {tran.ostat === ostat
                         ? tran.storename === ""
                           ? ""
@@ -111,23 +118,6 @@ function Pending() {
                 <br />
               </div>
             ))}
-
-            {/* {trans.map((tran) => (
-              <div>
-                {tran.email === email ? "Email: " + tran.email : ""}
-                <br />
-                {tran.email === email
-                  ? "Type of Errand: " + tran.typeoferrand
-                  : ""}
-                <br />
-                {tran.email === email
-                  ? tran.storename === ""
-                    ? ""
-                    : "agoi: " + tran.storename
-                  : ""}
-                <br />
-              </div>
-            ))} */}
           </ul>
         </div>
       </div>

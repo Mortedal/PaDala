@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Pagination from "../components/Pagination.js";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
 import SidebarRider from "../components/SidebarRider";
@@ -12,6 +13,8 @@ function Dashboard() {
   const auth = localStorage.getItem("user");
 
   const [trans, setTrans] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostPerPage] = useState(5);
 
   const email = JSON.parse(auth).email;
 
@@ -29,6 +32,12 @@ function Dashboard() {
     };
     fetchdata().catch(console.error);
   }, [email]);
+  const orders = trans.slice(0).reverse();
+
+  //get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = orders.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div className="Dashboard">
@@ -40,7 +49,7 @@ function Dashboard() {
         <h1>Your Transactions</h1>
         <div>
           <ul>
-            {trans.map((tran) => (
+            {currentPosts.map((tran) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -95,6 +104,11 @@ function Dashboard() {
               </div>
             ))} */}
           </ul>
+          <Pagination
+            totalPosts={trans.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>
