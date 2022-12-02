@@ -71,7 +71,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setUseraddress(e.target.value)}
               placeholder="Address"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -96,7 +96,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setCellnum(e.target.value)}
               placeholder="Cellphone Number"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -121,7 +121,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setRequest(e.target.value)}
               placeholder="Request"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
           </p>
           <br />

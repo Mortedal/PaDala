@@ -74,7 +74,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setUseraddress(e.target.value)}
               placeholder="Your Location"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -99,7 +99,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setDeliverylocation(e.target.value)}
               placeholder="Delivery Location"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <br />
@@ -108,7 +108,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setCellnum(e.target.value)}
               placeholder="Cellphone Number"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -133,7 +133,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setPickuptime(e.target.value)}
               placeholder="Time of Pick-Up"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
           </p>
           <br />

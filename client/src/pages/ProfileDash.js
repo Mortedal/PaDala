@@ -4,7 +4,7 @@ import SidebarAdmin from "../components/SidebarAdmin.js";
 import SidebarRider from "../components/SidebarRider.js";
 import "../styles/Dashboard.css";
 import Button from "@mui/material/Button";
-import ReorderIcon from "@mui/icons-material/Reorder";
+
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 
@@ -43,8 +43,6 @@ function Dashboard() {
 
     const data = await response.json();
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
-
     navigate("/editprofile");
   }
 
@@ -65,7 +63,7 @@ function Dashboard() {
           value={name}
           placeholder="Your Username"
           type="text"
-          style={{ width: 500 }}
+          style={{ width: "100%" }}
         />
 
         <p>Email</p>
@@ -74,7 +72,7 @@ function Dashboard() {
           value={email}
           placeholder="Email Address"
           type="text"
-          style={{ width: 500 }}
+          style={{ width: "100%" }}
         />
 
         <p>Address</p>
@@ -83,22 +81,23 @@ function Dashboard() {
           value={daddress}
           placeholder="Please add your address"
           type="text"
-          style={{ width: 500 }}
+          style={{ width: "100%" }}
         />
 
         <p>Phone number</p>
         <TextField
           disabled
           value={cellnum}
-          // onChange={(e) => setCellnum(e.target.value)}
           placeholder="Please add your phone number"
           type="text"
-          style={{ width: 500 }}
+          style={{ width: "100%" }}
         />
 
         <div align={"center"}>
           <br />
           <Button onClick={getUser}>Edit Profile</Button>
+          <br />
+          <br />
         </div>
       </div>
     </div>

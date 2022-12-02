@@ -73,7 +73,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setStorename(e.target.value)}
               placeholder="Name of Store"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <br />
@@ -82,7 +82,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setStoreaddress(e.target.value)}
               placeholder="Store Address"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <br />
@@ -91,7 +91,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setUseraddress(e.target.value)}
               placeholder="Address to Deliver to"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -116,7 +116,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setCellnum(e.target.value)}
               placeholder="Cellphone Number"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
             <br />
             <input
@@ -141,7 +141,7 @@ const PopupForm = ({ open, onClose }) => {
               onChange={(e) => setPickuptime(e.target.value)}
               placeholder="Time of Delivery"
               type="text"
-              style={{ width: 500 }}
+              style={{ width: "100%" }}
             />
           </p>
           <br />
