@@ -18,12 +18,15 @@ function Canceled() {
   useEffect(() => {
     console.log("This is email when i ran", ostat);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getPending", {
-        params: {
-          ostat,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getPending",
+        {
+          params: {
+            ostat,
+          },
+          //email
+        }
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };

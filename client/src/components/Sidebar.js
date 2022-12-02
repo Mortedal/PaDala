@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/Dashboard.css";
 import { SidebarData } from "./SidebarData";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+  const navigate = useNavigate();
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
@@ -12,7 +14,7 @@ function Sidebar() {
               key={aggooy}
               className="row"
               onClick={() => {
-                window.location.pathname = val.link;
+                navigate(val.link);
               }}
             >
               {" "}

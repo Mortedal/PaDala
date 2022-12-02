@@ -14,19 +14,22 @@ function Dashboard() {
 
   const [trans, setTrans] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostPerPage] = useState(5);
+  const [postsPerPage /*setPostPerPage*/] = useState(5);
 
   const email = JSON.parse(auth).email;
 
   useEffect(() => {
     console.log("This is email when i ran", email);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getTransSpec", {
-        params: {
-          email,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getTransSpec",
+        {
+          params: {
+            email,
+          },
+          //email
+        }
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };
@@ -78,6 +81,10 @@ function Dashboard() {
                       <br />
                       {tran.email === email
                         ? "Order Status: " + tran.ostat
+                        : ""}
+                      <br />
+                      {tran.email === email
+                        ? "Time to deliver: " + tran.pickuptime
                         : ""}
                       <br />
                     </Typography>

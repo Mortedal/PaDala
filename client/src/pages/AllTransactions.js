@@ -18,7 +18,10 @@ function AllTransactions() {
   useEffect(() => {
     console.log("This is email when i ran", email);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getTrans", {});
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getTrans",
+        {}
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };

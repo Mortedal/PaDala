@@ -22,13 +22,16 @@ function Completed() {
   useEffect(() => {
     console.log("This is email when i ran", ostat);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getRiderSpec", {
-        params: {
-          ostat,
-          rider,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getRiderSpec",
+        {
+          params: {
+            ostat,
+            rider,
+          },
+          //email
+        }
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };

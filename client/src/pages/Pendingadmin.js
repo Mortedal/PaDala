@@ -29,12 +29,15 @@ function Pending() {
   useEffect(() => {
     console.log("This is email when i ran", ostat);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getPending", {
-        params: {
-          ostat,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getPending",
+        {
+          params: {
+            ostat,
+          },
+          //email
+        }
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };
@@ -46,17 +49,20 @@ function Pending() {
   async function updateorder(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/updateorder", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        accept,
-        _id,
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/updateorder",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          accept,
+          _id,
+          email,
+        }),
+      }
+    );
     console.log(response);
     navigate("/ongoingorderadmin");
   }

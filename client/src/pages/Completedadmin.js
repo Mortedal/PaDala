@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
 import SidebarRider from "../components/SidebarRider.js";
+import Pagination from "../components/Pagination.js";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -14,24 +15,35 @@ function Completed() {
   const auth = localStorage.getItem("user");
 
   const [trans, setTrans] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage /*setPostPerPage*/] = useState(5);
 
   const ostat = "completed";
 
   useEffect(() => {
     console.log("This is email when i ran", ostat);
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getRider", {
-        params: {
-          ostat,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getRider",
+        {
+          params: {
+            ostat,
+          },
+          //email
+        }
+      );
       console.log("transactions --- ", data.data);
       setTrans(data.data);
     };
     fetchdata().catch(console.error);
   }, [ostat]);
   const orders = trans.slice(0).reverse();
+
+  //get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = orders.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
@@ -42,7 +54,7 @@ function Completed() {
         <h1>Completed Orders</h1>
         <div>
           <ul>
-            {orders.map((tran) => (
+            {currentPosts.map((tran) => (
               <div>
                 <Card sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -93,6 +105,11 @@ function Completed() {
               </div>
             ))} */}
           </ul>
+          <Pagination
+            totalPosts={trans.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>

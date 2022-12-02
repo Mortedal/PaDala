@@ -28,15 +28,18 @@ function Dashboard() {
   async function getUser(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/getUserinfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/getUserinfo",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    );
 
     const data = await response.json();
 
@@ -47,11 +50,7 @@ function Dashboard() {
 
   return (
     <div className="Dashboard">
-      <div>
-        <button onClick={toggleNavbar}>
-          <ReorderIcon />
-        </button>
-      </div>
+      <div></div>
       {/* <div className="hiddenlinks" id={openLinks ? "open" : "close"}> */}
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
       {JSON.parse(auth).role === "rider" ? <SidebarRider /> : ""}
@@ -82,7 +81,7 @@ function Dashboard() {
         <TextField
           disabled
           value={daddress}
-          placeholder="Default Address"
+          placeholder="Please add your address"
           type="text"
           style={{ width: 500 }}
         />
@@ -92,17 +91,13 @@ function Dashboard() {
           disabled
           value={cellnum}
           // onChange={(e) => setCellnum(e.target.value)}
-          placeholder="Phone number"
+          placeholder="Please add your phone number"
           type="text"
           style={{ width: 500 }}
         />
 
         <div align={"center"}>
-          <Button type="submit" className="btnPrimary">
-            Save
-          </Button>
-          <Button>Cancel</Button>
-
+          <br />
           <Button onClick={getUser}>Edit Profile</Button>
         </div>
       </div>

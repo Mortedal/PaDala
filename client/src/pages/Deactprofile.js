@@ -9,9 +9,10 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Deactprofile() {
+  const navigate = useNavigate();
   const auth = localStorage.getItem("user");
 
   const [cust, setCust] = useState([]);
@@ -24,12 +25,15 @@ function Deactprofile() {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getUsers", {
-        params: {
-          role,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getUsers",
+        {
+          params: {
+            role,
+          },
+          //email
+        }
+      );
       console.log("customers --- ", data.data);
       setCust(data.data);
     };
@@ -39,41 +43,47 @@ function Deactprofile() {
   async function deleteUser(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/deleteuser", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/deleteuser",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    );
     const data = await response.json();
     if (data.status === "ok") {
       alert("User deleted");
     }
-    window.location.reload(false);
+    navigate("/deactprofile");
     console.log(data);
   }
 
   async function updaterole(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/updaterole", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        crole,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/updaterole",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          crole,
+        }),
+      }
+    );
     const data = await response.json();
     if (data.status === "ok") {
       alert("role changed");
     }
-    window.location.reload(false);
+    navigate("/deactprofile");
     console.log(data);
   }
   return (

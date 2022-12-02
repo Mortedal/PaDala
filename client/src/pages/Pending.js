@@ -46,17 +46,20 @@ function Pending() {
   async function updateorder(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/updateorder", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        accept,
-        _id,
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/updateorder",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          accept,
+          _id,
+          email,
+        }),
+      }
+    );
     console.log(response);
     navigate("/ongoingorder");
   }

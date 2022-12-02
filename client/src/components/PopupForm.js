@@ -28,7 +28,7 @@ const PopupForm = ({ open, onClose }) => {
   async function orderErrand(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/order", {
+    const response = await fetch("https://padala2001.herokuapp.com/api/order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const PopupForm = ({ open, onClose }) => {
     <div className="modalContainer">
       <div className="modalRight">
         <h3>Food/Grocery</h3>
-        <p>Minimum fee ₱40</p>
+        <p>Minimum fee ₱50</p>
         <form onSubmit={orderErrand}>
           <TextField
             value={storename}

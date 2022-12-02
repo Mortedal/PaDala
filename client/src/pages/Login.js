@@ -12,14 +12,14 @@ function Login() {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/");
+      navigate("/services");
     }
   });
 
   async function loginUser(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/login", {
+    const response = await fetch("https://padala2001.herokuapp.com/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,11 +31,10 @@ function Login() {
     });
 
     const data = await response.json();
-    localStorage.setItem("user", JSON.stringify(data));
     if (data.user) {
       alert("Login Succesfull");
       localStorage.setItem("user", JSON.stringify(data));
-      window.location.href = "/profile";
+      navigate("/services");
     } else {
       alert("check your credentials");
     }

@@ -12,10 +12,8 @@ const app = express();
 
 const router = express.Router();
 
-const path = "require";
-
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/public")));
+app.use(express.json());
 
 const CONNECTION_URL =
   "mongodb+srv://PaDala:padalapassword123@cluster0.9itxfxl.mongodb.net/?retryWrites=true&w=majority";
@@ -133,6 +131,7 @@ app.post("/api/order", async (req, res) => {
 
 app.post("/api/updateuser", async (req, res) => {
   console.log(req.body);
+
   try {
     await User.findOneAndUpdate(
       {
@@ -148,7 +147,18 @@ app.post("/api/updateuser", async (req, res) => {
       }
     );
 
-    return res.json({ status: "ok" });
+    const user = await User.findOne({
+      email: req.body.email,
+    });
+    return res.json({
+      status: "ok",
+      email: user.email,
+      defaultaddress: user.defaultaddress,
+      cellnum: user.cellnum,
+      name: user.name,
+      password: user.password,
+      role: user.role,
+    });
   } catch (err) {
     res.json({ status: "error ", error: "invalid token" });
   }

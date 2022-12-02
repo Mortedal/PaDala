@@ -3,18 +3,21 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar.js";
 import SidebarAdmin from "../components/SidebarAdmin";
 import SidebarRider from "../components/SidebarRider";
+import Pagination from "../components/Pagination.js";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 function CustomerProfile() {
   const auth = localStorage.getItem("user");
 
   const [cust, setCust] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage /*setPostPerPage*/] = useState(5);
 
   const [email, setEmail] = useState();
 
@@ -22,34 +25,39 @@ function CustomerProfile() {
 
   const role = "";
 
-  const deact = "deactivated";
-
   useEffect(() => {
     const fetchdata = async () => {
-      const data = await axios.get("http://localhost:5000/api/getUsers", {
-        params: {
-          role,
-        },
-        //email
-      });
+      const data = await axios.get(
+        "https://padala2001.herokuapp.com/api/getUsers",
+        {
+          params: {
+            role,
+          },
+          //email
+        }
+      );
       console.log("customers --- ", data.data);
       setCust(data.data);
     };
     fetchdata().catch(console.error);
   }, [role]);
 
+  const custs = cust.slice(0).reverse();
   async function deleteUser(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/deleteuser", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/deleteuser",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    );
     const data = await response.json();
     if (data.status === "ok") {
       alert("User deleted");
@@ -61,16 +69,19 @@ function CustomerProfile() {
   async function updaterole(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/updaterole", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        crole,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/updaterole",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          crole,
+        }),
+      }
+    );
     const data = await response.json();
     if (data.status === "ok") {
       alert("role changed");
@@ -78,6 +89,12 @@ function CustomerProfile() {
     window.location.reload(false);
     console.log(data);
   }
+
+  //get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = custs.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
@@ -88,7 +105,7 @@ function CustomerProfile() {
         <h1>Customer Profiles</h1>
         <div>
           <ul>
-            {cust.map((custs, key) => (
+            {currentPosts.map((custs, key) => (
               <div>
                 <Card key={key} sx={{ maxWidth: 1000 }}>
                   <CardContent>
@@ -160,6 +177,11 @@ function CustomerProfile() {
                 </div>
               ))} */}
           </ul>
+          <Pagination
+            totalPosts={custs.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>

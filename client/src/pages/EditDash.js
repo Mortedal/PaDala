@@ -22,23 +22,30 @@ function Dashboard() {
   async function updateUser(event) {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/updateuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        defaultaddress,
-        cellnum,
-      }),
-    });
+    const response = await fetch(
+      "https://padala2001.herokuapp.com/api/updateuser",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          defaultaddress,
+          cellnum,
+        }),
+      }
+    );
+
+    console.log(response);
 
     const data = await response.json();
+    localStorage.removeItem("user");
+    localStorage.setItem("user", JSON.stringify(data));
 
     if (data.status === "ok") {
-      alert("updateeduser");
+      alert("updated user");
       //  navigate('/dashboard')
     }
 
@@ -52,28 +59,28 @@ function Dashboard() {
       <div className="dashbox">
         <h1>Edit Profile</h1>
         <form onSubmit={updateUser}>
-          <p>Username</p>
+          <p>Username *</p>
           <TextField
+            name="username"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder={name2}
             type="text"
             style={{ width: 500 }}
           />
           <p>Email</p>
           <TextField
+            name="email"
             disabled
             value={email}
             onChange={(e) => setDefaultaddress(e.target.value)}
-            placeholder={email}
             type="text"
             style={{ width: 500 }}
           />
-          <p>Address</p>
+          <p>Address *</p>
           <TextField
+            name="address"
             value={defaultaddress}
             onChange={(e) => setDefaultaddress(e.target.value)}
-            placeholder={daddress}
             type="text"
             style={{ width: 500 }}
           />
@@ -81,8 +88,7 @@ function Dashboard() {
           <TextField
             value={cellnum}
             onChange={(e) => setCellnum(e.target.value)}
-            placeholder={cellnum2}
-            type="text"
+            type="number"
             style={{ width: 500 }}
           />
           <br />
