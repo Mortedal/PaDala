@@ -35,4 +35,8 @@ export const SidebarDataAdmin = [
     title: "Rider Profiles",
     link: "/riderprofile",
   },
+  {
+    title: "All Trans Profiles",
+    link: "/riderprofile",
+  },
 ];
