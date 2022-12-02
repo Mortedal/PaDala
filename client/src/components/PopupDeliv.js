@@ -65,73 +65,77 @@ const PopupForm = ({ open, onClose }) => {
       <div className="modalRight">
         <h3>Delivery</h3>
         <p>Minimum fee ₱50</p>
+        <p>(Extra charges may apply depending on the location of the errand)</p>
+        <p>Mode of payment is only Cash on Delivery</p>
         <form onSubmit={orderErrand}>
-          <TextField
-            value={useraddress}
-            onChange={(e) => setUseraddress(e.target.value)}
-            placeholder="Your Location"
-            type="text"
-            style={{ width: 500 }}
-          />
-          <br />
-          <input
-            type="radio"
-            name="defaultadress"
-            value={""}
-            onChange={(e) => setUseraddress(e.target.value)}
-          />
-          New address
-          <br />
-          <input
-            type="radio"
-            name="defaultadress"
-            value={address}
-            onChange={(e) => setUseraddress(e.target.value)}
-          />
-          Default Address( {address} )
-          <br />
-          <br />
-          <TextField
-            value={deliverylocation}
-            onChange={(e) => setDeliverylocation(e.target.value)}
-            placeholder="Delivery Location"
-            type="text"
-            style={{ width: 500 }}
-          />
-          <br />
-          <br />
-          <TextField
-            value={cellnum}
-            onChange={(e) => setCellnum(e.target.value)}
-            placeholder="Cellphone Number"
-            type="text"
-            style={{ width: 500 }}
-          />
-          <br />
-          <input
-            type="radio"
-            name="Cellphone Number"
-            value={""}
-            onChange={(e) => setCellnum(e.target.value)}
-          />
-          New Cellphone Number
-          <br />
-          <input
-            type="radio"
-            name="Cellphone Number"
-            value={cell}
-            onChange={(e) => setCellnum(e.target.value)}
-          />
-          Cellphone Number( {cell} )
-          <br />
-          <br />
-          <TextField
-            value={pickuptime}
-            onChange={(e) => setPickuptime(e.target.value)}
-            placeholder="Time of Pick-Up"
-            type="text"
-            style={{ width: 500 }}
-          />
+          <p style={{ color: "gray" }}>
+            <TextField
+              value={useraddress}
+              onChange={(e) => setUseraddress(e.target.value)}
+              placeholder="Your Location"
+              type="text"
+              style={{ width: 500 }}
+            />
+            <br />
+            <input
+              type="radio"
+              name="defaultadress"
+              value={""}
+              onChange={(e) => setUseraddress(e.target.value)}
+            />
+            New address
+            <br />
+            <input
+              type="radio"
+              name="defaultadress"
+              value={address}
+              onChange={(e) => setUseraddress(e.target.value)}
+            />
+            Default Address( {address} )
+            <br />
+            <br />
+            <TextField
+              value={deliverylocation}
+              onChange={(e) => setDeliverylocation(e.target.value)}
+              placeholder="Delivery Location"
+              type="text"
+              style={{ width: 500 }}
+            />
+            <br />
+            <br />
+            <TextField
+              value={cellnum}
+              onChange={(e) => setCellnum(e.target.value)}
+              placeholder="Cellphone Number"
+              type="text"
+              style={{ width: 500 }}
+            />
+            <br />
+            <input
+              type="radio"
+              name="Cellphone Number"
+              value={""}
+              onChange={(e) => setCellnum(e.target.value)}
+            />
+            New Cellphone Number
+            <br />
+            <input
+              type="radio"
+              name="Cellphone Number"
+              value={cell}
+              onChange={(e) => setCellnum(e.target.value)}
+            />
+            Cellphone Number( {cell} )
+            <br />
+            <br />
+            <TextField
+              value={pickuptime}
+              onChange={(e) => setPickuptime(e.target.value)}
+              placeholder="Time of Pick-Up"
+              type="text"
+              style={{ width: 500 }}
+            />
+          </p>
           <br />
           <br />
           <div className="btnContainer">
