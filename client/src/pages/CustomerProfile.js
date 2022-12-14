@@ -70,7 +70,7 @@ function CustomerProfile() {
     event.preventDefault();
 
     const response = await fetch(
-      "https://padala2001.herokuapp.com/updaterole",
+      "https://padala2001.herokuapp.com/api/updaterole",
       {
         method: "post",
         headers: {

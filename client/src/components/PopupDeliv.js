@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 const time =
   new Date().toLocaleDateString() + " -- " + new Date().toLocaleTimeString();
@@ -9,6 +10,7 @@ const time =
 const ostat = "pending";
 
 const PopupForm = ({ open, onClose }) => {
+  const navigate = useNavigate();
   const [deliverylocation, setDeliverylocation] = useState("");
   const [useraddress, setUseraddress] = useState("");
   const [pickuptime, setPickuptime] = useState("");
@@ -52,7 +54,7 @@ const PopupForm = ({ open, onClose }) => {
     if (data.status === "ok") {
       alert("order created");
       onClose();
-      //  navigate('/dashboard')
+      navigate("/transaction");
     }
 
     console.log(data);

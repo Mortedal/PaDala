@@ -81,7 +81,6 @@ function Deactprofile() {
     );
     const data = await response.json();
     if (data.status === "ok") {
-      alert("role changed");
     }
     navigate("/deactprofile");
     console.log(data);

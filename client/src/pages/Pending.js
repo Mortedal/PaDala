@@ -20,7 +20,7 @@ function Pending() {
 
   const ostat = "pending";
 
-  const accept = "accept";
+  const accept = "accepted";
 
   const [_id, set_id] = useState([]);
 
@@ -107,6 +107,9 @@ function Pending() {
                         : ""}
                       <br />
                       {tran.ostat === ostat ? "Status: " + tran.ostat : ""}
+                      {tran.ostat === ostat
+                        ? "Phone Number: 0" + tran.cellnum
+                        : ""}
                       <CardActions>
                         <form onSubmit={updateorder}>
                           <Button

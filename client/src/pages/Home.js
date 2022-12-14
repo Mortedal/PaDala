@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import "../styles/Home.css";
 
 function Home() {
+  const auth = localStorage.getItem("user");
+
   return (
     <div className="home">
       <div
@@ -16,7 +18,7 @@ function Home() {
         <br />
         <p>Erranding Service</p>
         <Link to="/login" style={{ textDecoration: "none" }}>
-          <Button>Log-in</Button>
+          {auth ? <Button>Order Now!</Button> : <Button>Log-In</Button>}
         </Link>
       </div>
     </div>

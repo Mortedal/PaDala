@@ -16,7 +16,7 @@ function Pending() {
 
   const [trans, setTrans] = useState([]);
 
-  const ostat = "accept";
+  const ostat = "accepted";
 
   const [accept, setAccept] = useState([]);
 
@@ -110,6 +110,11 @@ function Pending() {
                         : ""}
                       <br />
                       {tran.ostat === ostat ? "Status: " + tran.ostat : ""}
+                      <br />
+                      {tran.ostat === ostat
+                        ? "Phone Number: 0" + tran.cellnum
+                        : ""}
+
                       <CardActions>
                         <form onSubmit={updateorder}>
                           <br />

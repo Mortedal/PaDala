@@ -23,18 +23,13 @@ import OngoingOrder from "./pages/Ongoingorder";
 import PendingAdmin from "./pages/Pendingadmin";
 import CompletedAdmin from "./pages/Completedadmin";
 import OngoingOrderAdmin from "./pages/Ongoingorderadmin";
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Deactprofile from "./pages/Deactprofile";
 
 function App() {
   return (
     <div className="App">
-      <Router history={BrowserRouter}>
+      <Router>
         <Navbar />
         <Routes>
           <Route element={<Authen />}>

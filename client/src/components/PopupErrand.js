@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { useNavigate } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 const time =
   new Date().toLocaleDateString() + " -- " + new Date().toLocaleTimeString();
@@ -9,7 +10,7 @@ const time =
 const ostat = "pending";
 
 const PopupForm = ({ open, onClose }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [useraddress, setUseraddress] = useState("");
   const [cellnum, setCellnum] = useState("");
   const [request, setRequest] = useState("");
@@ -49,7 +50,7 @@ const PopupForm = ({ open, onClose }) => {
     if (data.status === "ok") {
       alert("order created");
       onClose();
-      //  navigate('/dashboard')
+      navigate("/transaction");
     }
 
     console.log(data);

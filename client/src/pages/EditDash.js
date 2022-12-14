@@ -18,11 +18,8 @@ function Dashboard() {
   const [isError2, setIsError2] = useState(true);
   const [isError3, setIsError3] = useState(true);
 
-  const temp = localStorage.getItem("userInfo");
-  const email = JSON.parse(temp).userInfo.email;
-  const name2 = JSON.parse(temp).userInfo.name;
-  const daddress = JSON.parse(temp).userInfo.defaultaddress;
-  const cellnum2 = JSON.parse(temp).userInfo.cellnum;
+  const temp = localStorage.getItem("user");
+  const email = JSON.parse(temp).email;
 
   const auth = localStorage.getItem("user");
 
@@ -56,7 +53,6 @@ function Dashboard() {
     localStorage.setItem("user", JSON.stringify(data));
 
     if (data.status === "ok") {
-      alert("updated user");
       navigate("/profile");
     }
 

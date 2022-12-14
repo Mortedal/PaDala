@@ -16,7 +16,7 @@ function Pending() {
 
   const [trans, setTrans] = useState([]);
 
-  const ostat = "accept";
+  const ostat = "accepted";
 
   const [accept, setAccept] = useState([]);
 
@@ -111,6 +111,10 @@ function Pending() {
                         : ""}
                       <br />
                       {tran.rider === rider ? "Status: " + tran.ostat : ""}
+                      <br />
+                      {tran.ostat === ostat
+                        ? "Phone Number: 0" + tran.cellnum
+                        : ""}
                       <CardActions>
                         <form onSubmit={updateorder}>
                           <br />
@@ -121,7 +125,7 @@ function Pending() {
                             onClick={() =>
                               set_id(tran._id) ||
                               setAccept("completed") ||
-                              setFee("40")
+                              setFee("50")
                             }
                           >
                             50
@@ -132,7 +136,7 @@ function Pending() {
                             onClick={() =>
                               set_id(tran._id) ||
                               setAccept("completed") ||
-                              setFee("60")
+                              setFee("70")
                             }
                           >
                             70

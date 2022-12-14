@@ -28,6 +28,10 @@ function AllTransactions() {
     fetchdata().catch(console.error);
   }, [email]);
 
+  window.setTimeout(function () {
+    window.location.reload();
+  }, 3000);
+
   return (
     <div className="Dashboard">
       {JSON.parse(auth).role === "admin" ? <SidebarAdmin /> : ""}
